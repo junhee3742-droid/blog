@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { UI } from '../i18n';
+
+const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'ko';
+---
+
+<Base lang={lang} title="404">
+  <section class="intro">
+    <h1>404</h1>
+    <p>{UI[lang].notFound}</p>
+    <a href={`/${lang}/`}>{UI[lang].home}</a>
+  </section>
+</Base>

@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { CATEGORIES, LANGS, SITE, type Lang } from '../../config';
+import { CATEGORY_DESC, CATEGORY_LABEL, UI } from '../../i18n';
+import { getPosts } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const posts = await getPosts(lang);
+---
+
+<Base lang={lang}>
+  <section class="intro">
+    <h1>{SITE.title[lang]}</h1>
+    <p>{SITE.description[lang]}</p>
+  </section>
+
+  <div class="cats">
+    {
+      CATEGORIES.map((cat) => (
+        <a class="cat-card" href={`/${lang}/${cat}/`}>
+          <strong>{CATEGORY_LABEL[lang][cat]}</strong>
+          <span>{CATEGORY_DESC[lang][cat]}</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2 class="section-title">{UI[lang].latest}</h2>
+  <PostList posts={posts} lang={lang} />
+</Base>

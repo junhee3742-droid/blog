@@ -1,0 +1,29 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import { CATEGORIES, LANGS, type Category, type Lang } from '../../../config';
+import { CATEGORY_DESC, CATEGORY_LABEL, otherLang } from '../../../i18n';
+import { getPosts } from '../../../lib/posts';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => CATEGORIES.map((category) => ({ params: { lang, category } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const category = Astro.params.category as Category;
+const posts = await getPosts(lang, category);
+const label = CATEGORY_LABEL[lang][category];
+---
+
+<Base
+  lang={lang}
+  title={label}
+  description={CATEGORY_DESC[lang][category]}
+  alternateUrl={`/${otherLang(lang)}/${category}/`}
+>
+  <section class="intro">
+    <h1>{label}</h1>
+    <p>{CATEGORY_DESC[lang][category]}</p>
+  </section>
+  <PostList posts={posts} lang={lang} showCategory={false} />
+</Base>

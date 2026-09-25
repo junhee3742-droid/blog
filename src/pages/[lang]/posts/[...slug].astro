@@ -1,0 +1,59 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import type { Lang } from '../../../config';
+import { CATEGORY_LABEL, UI, formatDate } from '../../../i18n';
+import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { lang: post.data.lang, slug: postSlug(post) },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const lang = post.data.lang as Lang;
+const { Content } = await render(post);
+const translation = await findTranslation(post);
+---
+
+<Base
+  lang={lang}
+  title={post.data.title}
+  description={post.data.description}
+  alternateUrl={translation ? postUrl(translation) : undefined}
+>
+  <article>
+    <header class="post-header">
+      <div class="meta">
+        <a class="badge" href={`/${lang}/${post.data.category}/`}>
+          {CATEGORY_LABEL[lang][post.data.category]}
+        </a>
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+      </div>
+      <h1>{post.data.title}</h1>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {
+      post.data.tags.length > 0 && (
+        <div class="tags">
+          {post.data.tags.map((tag) => (
+            <span class="badge">#{tag}</span>
+          ))}
+        </div>
+      )
+    }
+
+    <a class="back" href={`/${lang}/`}>{UI[lang].backToList}</a>
+  </article>
+</Base>

@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import { CATEGORIES, SITE, type Lang } from '../config';
+import { CATEGORY_LABEL, UI, otherLang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** 언어 전환 버튼이 갈 주소. 없으면 다른 언어의 홈으로 가요. */
+  alternateUrl?: string;
+}
+
+const { lang, title, description, alternateUrl } = Astro.props;
+const siteTitle = SITE.title[lang];
+const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const pageDesc = description ?? SITE.description[lang];
+const other = otherLang(lang);
+const switchUrl = alternateUrl ?? `/${other}/`;
+const path = Astro.url.pathname;
+const t = UI[lang];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:type" content={title ? 'article' : 'website'} />
+    <link rel="alternate" hreflang={other} href={switchUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-title" href={`/${lang}/`}>{siteTitle}</a>
+        <nav class="site-nav">
+          {
+            CATEGORIES.map((cat) => {
+              const href = `/${lang}/${cat}/`;
+              return (
+                <a href={href} aria-current={path.startsWith(href) ? 'page' : undefined}>
+                  {CATEGORY_LABEL[lang][cat]}
+                </a>
+              );
+            })
+          }
+          <a href={`/${lang}/about/`} aria-current={path.startsWith(`/${lang}/about`) ? 'page' : undefined}>
+            {t.about}
+          </a>
+          <a class="lang-switch" href={switchUrl} hreflang={other}>{t.otherLang}</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container">© {new Date().getFullYear()} {siteTitle}</div>
+    </footer>
+  </body>
+</html>
