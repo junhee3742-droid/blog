@@ -1,4 +1,4 @@
-# 연구와 코딩 노트
+# Vibe Lab Notes
 
 논문 정보와 바이브 코딩 프로젝트를 기록하는 한국어/영어 블로그. [Astro](https://astro.build)로 만들었고 Vercel에 배포합니다.
 

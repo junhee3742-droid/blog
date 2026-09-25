@@ -8,8 +8,8 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const SITE = {
   title: {
-    ko: '연구와 코딩 노트',
-    en: 'Research & Code Notes',
+    ko: 'Vibe Lab Notes',
+    en: 'Vibe Lab Notes',
   },
   description: {
     ko: '신경과학 대학원생이 논문을 읽고, AI로 연구·생산성 도구를 직접 만드는 기록',
