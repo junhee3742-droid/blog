@@ -18,7 +18,7 @@ This blog is where I record that process.
 
 ## What I write about
 
-- **Papers**: paper summaries and research trends
+- **Science & Research**: paper summaries, Nobel prizes, clinical trial results and other science news
 - **Projects**: a paper collector, blog-writing automation workflows, apps and other things built with AI
 
 ## This blog is a project too

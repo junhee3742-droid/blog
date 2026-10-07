@@ -1,6 +1,6 @@
 # Vibe Lab Notes
 
-논문 정보와 바이브 코딩 프로젝트를 기록하는 한국어/영어 블로그. [Astro](https://astro.build)로 만들었고 Cloudflare Workers에 배포합니다 (https://vibelabnotes.junhee3742.workers.dev).
+과학 · 연구 소식과 바이브 코딩 프로젝트를 기록하는 한국어/영어 블로그. [Astro](https://astro.build)로 만들었고 Cloudflare Workers에 배포합니다 (https://vibelabnotes.junhee3742.workers.dev).
 
 ## 주소 구조
 
@@ -8,7 +8,7 @@
 |---|---|
 | `/` | 한국어 홈으로 이동 |
 | `/ko/`, `/en/` | 언어별 홈 |
-| `/ko/papers/` | 논문 정보 |
+| `/ko/science/` | 과학 · 연구 소식 |
 | `/ko/projects/` | 개발 · 부업 |
 | `/ko/posts/<파일이름>/` | 글 한 편 |
 | `/ko/about/` | 소개 |

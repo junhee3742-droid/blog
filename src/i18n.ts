@@ -23,17 +23,17 @@ export const UI = {
 } satisfies Record<Lang, Record<string, string>>;
 
 export const CATEGORY_LABEL: Record<Lang, Record<Category, string>> = {
-  ko: { papers: '논문 정보', projects: '개발 · 부업' },
-  en: { papers: 'Papers', projects: 'Projects' },
+  ko: { science: '과학 · 연구 소식', projects: '개발 · 부업' },
+  en: { science: 'Science & Research', projects: 'Projects' },
 };
 
 export const CATEGORY_DESC: Record<Lang, Record<Category, string>> = {
   ko: {
-    papers: '읽은 논문 요약과 연구 동향 정리',
+    science: '논문 요약, 노벨상, 신약 임상시험 결과 같은 과학 · 연구 소식',
     projects: '바이브 코딩으로 만든 도구, 자동화 워크플로우, 부업 프로젝트 기록',
   },
   en: {
-    papers: 'Paper summaries and research trends',
+    science: 'Paper summaries, Nobel prizes, clinical trial results and other science news',
     projects: 'Tools, automation workflows and side projects built with AI',
   },
 };

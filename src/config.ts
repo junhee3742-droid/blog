@@ -3,7 +3,7 @@
 export const LANGS = ['ko', 'en'] as const;
 export type Lang = (typeof LANGS)[number];
 
-export const CATEGORIES = ['papers', 'projects'] as const;
+export const CATEGORIES = ['science', 'projects'] as const;
 export type Category = (typeof CATEGORIES)[number];
 
 export const SITE = {

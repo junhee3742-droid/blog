@@ -9,7 +9,7 @@ const posts = defineCollection({
     description: z.string(),
     date: z.coerce.date(),
     lang: z.enum(['ko', 'en']),
-    category: z.enum(['papers', 'projects']),
+    category: z.enum(['science', 'projects']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     // 한국어 글과 영어 번역본을 연결할 때 두 글에 같은 값을 넣어요.
