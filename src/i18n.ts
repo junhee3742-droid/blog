@@ -79,7 +79,7 @@ export function noteNumber(n: number): string {
   return `No.${String(n).padStart(3, '0')}`;
 }
 
-// 글 맨 위 인사: '노트 No.003을 펼쳐요' / 'Opening note No.003'
+// 글 맨 위 인사: 'No.003 노트를 펼쳐요' / 'Opening note No.003'
 export function noteOpenLabel(n: number, lang: Lang): string {
-  return lang === 'ko' ? `노트 ${noteNumber(n)}을 펼쳐요` : `Opening note ${noteNumber(n)}`;
+  return lang === 'ko' ? `${noteNumber(n)} 노트를 펼쳐요` : `Opening note ${noteNumber(n)}`;
 }
