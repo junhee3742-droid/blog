@@ -12,8 +12,20 @@
 | `/ko/projects/` | 개발 · 부업 |
 | `/ko/posts/<파일이름>/` | 글 한 편 |
 | `/ko/about/` | 소개 |
+| `/admin/` | 글 관리 화면 (본인만 로그인 가능) |
 
-## 새 글 쓰기
+## 관리자 화면에서 글 쓰기 (추천)
+
+`블로그주소/admin/` 에 들어가면 브라우저에서 글을 쓰고 고칠 수 있어요 ([Sveltia CMS](https://github.com/sveltia/sveltia-cms)).
+
+1. 처음 한 번: **Sign In with Token** → 안내 링크로 GitHub 토큰을 만들어 붙여 넣어요. (권한: `blog` 저장소의 Contents 읽기/쓰기)
+2. **한국어 글** 또는 **영어 글**에서 새 글을 만들거나 기존 글을 열어요.
+3. 다 쓰고 **저장(Save)** 하면 GitHub에 올라가고, 3~5분 뒤 블로그에 반영돼요.
+4. 공개 전이면 **임시저장** 스위치를 켜 두세요. 블로그에 안 보여요.
+
+설정 파일: `public/admin/config.yml`
+
+## 파일로 직접 새 글 쓰기
 
 1. `templates/post-template.md` 를 복사해서 `src/content/posts/ko/` 에 넣어요. 파일 이름이 주소가 돼요 (예: `paper-collector.md` → `/ko/posts/paper-collector/`). 파일 이름은 영어 소문자와 `-` 로 쓰는 걸 추천해요.
 2. 맨 위 `title`, `description`, `date`, `category` 를 채우고 본문을 써요.

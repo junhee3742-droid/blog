@@ -1,0 +1,100 @@
+# Sveltia CMS 설정 (관리자 화면: /admin/)
+# 로그인: 첫 화면의 "Sign In with Token" → GitHub 토큰 입력 (blog 저장소 Contents 읽기/쓰기 권한)
+
+backend:
+  name: github
+  repo: junhee3742-droid/blog
+  branch: main
+
+site_url: https://vibelabnotes.junhee3742.workers.dev
+display_url: https://vibelabnotes.junhee3742.workers.dev
+
+# 글에 올리는 이미지가 저장되는 곳
+media_folder: /public/images/posts
+public_folder: /images/posts
+
+# 파일 이름(=주소)은 영어 소문자와 하이픈만 쓰게 해요
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+  lowercase: true
+
+collections:
+  - name: posts_ko
+    label: 한국어 글
+    label_singular: 한국어 글
+    folder: /src/content/posts/ko
+    extension: md
+    format: frontmatter
+    create: true
+    slug:
+      editable: [create]
+      hint: 글 주소가 돼요. 영어 소문자와 하이픈(-)으로 적어 주세요. 예) paper-collector
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', '영어 소문자, 숫자, 하이픈(-)만 쓸 수 있어요']
+    summary: '{{date}} · {{title}}'
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: 제목, widget: string }
+      - { name: description, label: 요약 (목록과 검색 결과에 보여요), widget: text }
+      - name: date
+        label: 날짜
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+      - name: lang
+        label: 언어
+        widget: hidden
+        default: ko
+      - name: category
+        label: 분야
+        widget: select
+        options:
+          - { label: 과학 · 연구 소식, value: science }
+          - { label: 개발 · 부업, value: projects }
+        default: projects
+      - { name: tags, label: 태그, widget: list, required: false, default: [] }
+      - { name: draft, label: 임시저장 (켜 두면 블로그에 안 보여요), widget: boolean, default: false, required: false }
+      - { name: cover, label: 대표 이미지, widget: image, required: false }
+      - { name: coverAlt, label: 대표 이미지 설명, widget: string, required: false }
+      - { name: translationKey, label: 번역 연결 키 (한/영 두 글에 같은 값), widget: string, required: false }
+      - { name: body, label: 본문, widget: markdown }
+
+  - name: posts_en
+    label: 영어 글 (English)
+    label_singular: 영어 글
+    folder: /src/content/posts/en
+    extension: md
+    format: frontmatter
+    create: true
+    slug:
+      editable: [create]
+      hint: Lowercase letters, numbers and hyphens only. e.g. paper-collector
+      pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Lowercase letters, numbers and hyphens only']
+    summary: '{{date}} · {{title}}'
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text }
+      - name: date
+        label: Date
+        widget: datetime
+        format: YYYY-MM-DD
+        time_format: false
+      - name: lang
+        label: Language
+        widget: hidden
+        default: en
+      - name: category
+        label: Category
+        widget: select
+        options:
+          - { label: Science & Research, value: science }
+          - { label: Projects, value: projects }
+        default: projects
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - { name: draft, label: Draft (hidden from the blog), widget: boolean, default: false, required: false }
+      - { name: cover, label: Cover image, widget: image, required: false }
+      - { name: coverAlt, label: Cover image description, widget: string, required: false }
+      - { name: translationKey, label: Translation key (same value on ko and en posts), widget: string, required: false }
+      - { name: body, label: Body, widget: markdown }
