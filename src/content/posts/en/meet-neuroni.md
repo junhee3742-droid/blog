@@ -6,8 +6,6 @@ lang: en
 category: projects
 tags: [mascot, stickers, neuron, vibe-coding]
 translationKey: meet-neuroni
-cover: /mascot.svg
-coverAlt: Neuroni, a neuron mascot, waving
 ---
 
 Hi! Vibe Lab Notes now has a mascot. Meet **Neuroni**.
