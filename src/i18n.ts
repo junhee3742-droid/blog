@@ -14,6 +14,8 @@ export const UI = {
     entries: '기록',
     since: '첫 기록',
     browse: '분야별로 보기',
+    noteClose: '오늘의 노트는 여기서 덮을게요.',
+    noteThanks: '구독과 관심은 뉴로니에게 힘이 돼요!',
   },
   en: {
     home: 'Home',
@@ -27,6 +29,8 @@ export const UI = {
     entries: 'Entries',
     since: 'First entry',
     browse: 'Browse by topic',
+    noteClose: "That's where I close today's note.",
+    noteThanks: 'Your interest keeps Neuroni going!',
   },
 } satisfies Record<Lang, Record<string, string>>;
 
@@ -68,4 +72,14 @@ export function stampDate(date: Date): string {
 export function countLabel(n: number, lang: Lang): string {
   if (lang === 'ko') return `글 ${n}편`;
   return n === 1 ? '1 post' : `${n} posts`;
+}
+
+// 노트 번호: 3 → 'No.003'
+export function noteNumber(n: number): string {
+  return `No.${String(n).padStart(3, '0')}`;
+}
+
+// 글 맨 위 인사: '노트 No.003을 펼쳐요' / 'Opening note No.003'
+export function noteOpenLabel(n: number, lang: Lang): string {
+  return lang === 'ko' ? `노트 ${noteNumber(n)}을 펼쳐요` : `Opening note ${noteNumber(n)}`;
 }

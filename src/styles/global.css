@@ -322,3 +322,25 @@ main { padding: 40px 0 72px; }
   .entry .stamp { padding-top: 0; }
   .entry-title { font-size: 1.08rem; }
 }
+
+/* 노트 펼치기 / 덮기 (모든 글의 시작과 끝) */
+.note-open {
+  display: flex; align-items: center; gap: 10px;
+  margin: -16px 0 28px; color: var(--muted); font-size: 0.95rem;
+}
+.note-open img { flex: none; }
+.note-open .stamp { font-family: var(--font-mono); font-size: 0.88em; }
+.note-close {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: 48px; padding: 20px 22px;
+  border: 1px dashed var(--rule-strong); border-radius: 12px;
+  background: var(--surface);
+}
+.note-close img { flex: none; }
+.note-close p { margin: 0; }
+.note-close-main { font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem; }
+.note-close-sub { color: var(--muted); font-size: 0.95rem; margin-top: 4px !important; }
+@media (max-width: 520px) {
+  .note-close { padding: 16px; gap: 12px; }
+  .note-close img { width: 56px; height: 56px; }
+}

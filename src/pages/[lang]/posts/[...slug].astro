@@ -2,22 +2,30 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import type { Lang } from '../../../config';
-import { CATEGORY_LABEL, UI, formatDate, stampDate } from '../../../i18n';
+import { CATEGORY_LABEL, UI, formatDate, noteNumber, noteOpenLabel, stampDate } from '../../../i18n';
 import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
+  // 노트 번호: 언어별로 오래된 글부터 1, 2, 3...
+  const byDate = [...posts].sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf() || a.id.localeCompare(b.id),
+  );
   return posts.map((post) => ({
     params: { lang: post.data.lang, slug: postSlug(post) },
-    props: { post },
+    props: {
+      post,
+      noteNo: byDate.filter((p) => p.data.lang === post.data.lang).findIndex((p) => p.id === post.id) + 1,
+    },
   }));
 }
 
 interface Props {
   post: Post;
+  noteNo: number;
 }
 
-const { post } = Astro.props;
+const { post, noteNo } = Astro.props;
 const lang = post.data.lang as Lang;
 const { Content } = await render(post);
 const translation = await findTranslation(post);
@@ -51,9 +59,24 @@ const translation = await findTranslation(post);
       <h1>{post.data.title}</h1>
     </header>
 
+    <p class="note-open">
+      <img src="/stickers/happy.svg" alt="" width="44" height="44" />
+      <span>
+        {noteOpenLabel(noteNo, lang)} · <span class="stamp">{stampDate(post.data.date)}</span>
+      </span>
+    </p>
+
     <div class="prose">
       <Content />
     </div>
+
+    <aside class="note-close" aria-label={noteNumber(noteNo)}>
+      <img src="/mascot.svg" alt="" width="72" height="72" loading="lazy" />
+      <div>
+        <p class="note-close-main">{UI[lang].noteClose}</p>
+        <p class="note-close-sub">{UI[lang].noteThanks}</p>
+      </div>
+    </aside>
 
     {
       post.data.tags.length > 0 && (

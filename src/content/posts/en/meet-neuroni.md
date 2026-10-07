@@ -10,8 +10,6 @@ translationKey: meet-neuroni
 
 Hi! Vibe Lab Notes now has a mascot. Meet **Neuroni**.
 
-![Happy](/stickers/happy.svg)
-
 As befits a neuroscience blog, Neuroni is modeled on a **neuron**, the nerve cell our brains are built from. You will see Neuroni being happy, puzzled and surprised alongside the posts here.
 
 ## Neuroni is built like a real neuron
