@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import PostList from '../../../components/PostList.astro';
+import CategoryIcon from '../../../components/CategoryIcon.astro';
 import { CATEGORIES, LANGS, type Category, type Lang } from '../../../config';
 import { CATEGORY_DESC, CATEGORY_LABEL, otherLang } from '../../../i18n';
 import { getPosts } from '../../../lib/posts';
@@ -21,7 +22,8 @@ const label = CATEGORY_LABEL[lang][category];
   description={CATEGORY_DESC[lang][category]}
   alternateUrl={`/${otherLang(lang)}/${category}/`}
 >
-  <section class="intro">
+  <section class={`intro cat-intro cat-${category}`}>
+    <span class="cat-intro-icon"><CategoryIcon category={category} size={22} /></span>
     <h1>{label}</h1>
     <p>{CATEGORY_DESC[lang][category]}</p>
   </section>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="기쁨">
+<title>기쁨</title>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M72 56Q68 42 60 34 M66 44L56 46 M90 55Q94 40 102 33 M96 42L106 45 M92 118Q98 140 118 140Q138 140 138 124Q138 112 126 113 M48 80Q32 70 30 52 M112 80Q128 70 130 52" stroke="#ffffff" stroke-width="23"/>
+<circle cx="126" cy="113" r="9.5" fill="#ffffff"/>
+<ellipse cx="80" cy="86" rx="42" ry="37" fill="#ffffff" stroke="#ffffff" stroke-width="14"/>
+<path d="M72 56Q68 42 60 34 M66 44L56 46 M90 55Q94 40 102 33 M96 42L106 45 M92 118Q98 140 118 140Q138 140 138 124Q138 112 126 113 M48 80Q32 70 30 52 M112 80Q128 70 130 52" stroke="#1a2533" stroke-width="15"/>
+<path d="M72 56Q68 42 60 34 M66 44L56 46 M90 55Q94 40 102 33 M96 42L106 45 M92 118Q98 140 118 140Q138 140 138 124Q138 112 126 113 M48 80Q32 70 30 52 M112 80Q128 70 130 52" stroke="#c7dbf4" stroke-width="7"/>
+<path d="M92 118Q98 140 118 140Q138 140 138 124Q138 112 126 113" stroke="#4fa89c" stroke-width="7" stroke-dasharray="9 7" stroke-dashoffset="-6"/>
+<circle cx="126" cy="113" r="6" fill="#4fa89c" stroke="#1a2533" stroke-width="3.5"/>
+<g fill="#4fa89c" stroke="#1a2533" stroke-width="3">
+<circle cx="60" cy="34" r="4"/>
+<circle cx="102" cy="33" r="4"/>
+</g>
+<ellipse cx="80" cy="86" rx="42" ry="37" fill="#c7dbf4" stroke="#1a2533" stroke-width="5"/>
+<path d="M48 104Q80 128 112 104" stroke="#a9c4e8" stroke-width="5"/>
+<path d="M54 68Q60 59 70 56" stroke="#ffffff" stroke-width="4.5" opacity=".9"/>
+<path d="M59 86Q66 77 73 86M87 86Q94 77 101 86" stroke="#1a2533" stroke-width="4.5"/>
+<ellipse cx="55" cy="95" rx="6.5" ry="4" fill="#f29aa6" opacity=".75"/>
+<ellipse cx="105" cy="95" rx="6.5" ry="4" fill="#f29aa6" opacity=".75"/>
+<path d="M70 96Q80 96 90 96Q89 108 80 108Q71 108 70 96Z" fill="#1a2533" stroke="#1a2533" stroke-width="3" stroke-linejoin="round"/>
+<path d="M74 104Q80 100 86 104Q83 107 80 107Q77 107 74 104Z" fill="#f08fa0"/>
+<path d="M20 28V40M14 34H26" stroke="#ffffff" stroke-width="9.5"/>
+<path d="M20 28V40M14 34H26" stroke="#ffcf5a" stroke-width="3.5"/>
+<path d="M142 25V35M137 30H147" stroke="#ffffff" stroke-width="9.5"/>
+<path d="M142 25V35M137 30H147" stroke="#ffcf5a" stroke-width="3.5"/>
+</g>
+</svg>

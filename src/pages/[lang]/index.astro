@@ -1,8 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
+import CategoryIcon from '../../components/CategoryIcon.astro';
 import PostList from '../../components/PostList.astro';
 import { CATEGORIES, LANGS, SITE, type Lang } from '../../config';
-import { CATEGORY_DESC, CATEGORY_LABEL, UI } from '../../i18n';
+import { CATEGORY_DESC, CATEGORY_LABEL, UI, countLabel, stampDate } from '../../i18n';
 import { getPosts } from '../../lib/posts';
 
 export function getStaticPaths() {
@@ -11,25 +12,52 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const posts = await getPosts(lang);
+const t = UI[lang];
+// 글은 최신순이라 마지막 글이 첫 기록이에요.
+const firstPost = posts.length > 0 ? posts[posts.length - 1] : undefined;
 ---
 
 <Base lang={lang}>
-  <section class="intro">
-    <h1>{SITE.title[lang]}</h1>
-    <p>{SITE.description[lang]}</p>
+  <section class="hero">
+    <div class="plate">
+      <h1>{SITE.title[lang]}</h1>
+      <img class="mascot plate-mascot" src="/mascot.svg" alt="" width="128" height="128" />
+      <p class="hero-desc">{SITE.description[lang]}</p>
+      <dl class="plate-meta">
+        <div>
+          <dt>{t.entries}</dt>
+          <dd>{posts.length}</dd>
+        </div>
+        {
+          firstPost && (
+            <div>
+              <dt>{t.since}</dt>
+              <dd>{stampDate(firstPost.data.date)}</dd>
+            </div>
+          )
+        }
+      </dl>
+    </div>
   </section>
 
-  <div class="cats">
+  <h2 class="section-title">{t.browse}</h2>
+  <div class="tabs">
     {
       CATEGORIES.map((cat) => (
-        <a class="cat-card" href={`/${lang}/${cat}/`}>
-          <strong>{CATEGORY_LABEL[lang][cat]}</strong>
-          <span>{CATEGORY_DESC[lang][cat]}</span>
+        <a class={`tab-card cat-${cat}`} href={`/${lang}/${cat}/`}>
+          <span class="tab-label">
+            <CategoryIcon category={cat} size={18} />
+            {CATEGORY_LABEL[lang][cat]}
+          </span>
+          <span class="tab-body">
+            <span class="tab-desc">{CATEGORY_DESC[lang][cat]}</span>
+            <span class="tab-count">{countLabel(posts.filter((p) => p.data.category === cat).length, lang)}</span>
+          </span>
         </a>
       ))
     }
   </div>
 
-  <h2 class="section-title">{UI[lang].latest}</h2>
+  <h2 class="section-title">{t.latest}</h2>
   <PostList posts={posts} lang={lang} />
 </Base>

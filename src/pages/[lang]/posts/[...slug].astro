@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import type { Lang } from '../../../config';
-import { CATEGORY_LABEL, UI, formatDate } from '../../../i18n';
+import { CATEGORY_LABEL, UI, formatDate, stampDate } from '../../../i18n';
 import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
 
 export async function getStaticPaths() {
@@ -28,14 +28,25 @@ const translation = await findTranslation(post);
   title={post.data.title}
   description={post.data.description}
   alternateUrl={translation ? postUrl(translation) : undefined}
+  image={post.data.cover}
+  imageAlt={post.data.coverAlt}
 >
-  <article>
+  <article class={`post cat-${post.data.category}`}>
+    {
+      post.data.cover && (
+        <figure class="cover">
+          <img src={post.data.cover} alt={post.data.coverAlt ?? ''} />
+        </figure>
+      )
+    }
     <header class="post-header">
       <div class="meta">
         <a class="badge" href={`/${lang}/${post.data.category}/`}>
           {CATEGORY_LABEL[lang][post.data.category]}
         </a>
-        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+        <time class="stamp" datetime={post.data.date.toISOString()} title={formatDate(post.data.date, lang)}>
+          {stampDate(post.data.date)}
+        </time>
       </div>
       <h1>{post.data.title}</h1>
     </header>
@@ -48,7 +59,7 @@ const translation = await findTranslation(post);
       post.data.tags.length > 0 && (
         <div class="tags">
           {post.data.tags.map((tag) => (
-            <span class="badge">#{tag}</span>
+            <span class="tag">#{tag}</span>
           ))}
         </div>
       )

@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../config';
-import { CATEGORY_LABEL, UI, formatDate } from '../i18n';
+import CategoryIcon from './CategoryIcon.astro';
+import { CATEGORY_LABEL, UI, stampDate } from '../i18n';
 import { postUrl, type Post } from '../lib/posts';
 
 interface Props {
@@ -14,19 +15,31 @@ const { posts, lang, showCategory = true } = Astro.props;
 
 {
   posts.length === 0 ? (
-    <p class="empty">{UI[lang].noPosts}</p>
+    <div class="empty">
+      <img class="mascot" src="/mascot.svg" alt="" width="88" height="88" loading="lazy" />
+      <p>{UI[lang].noPosts}</p>
+    </div>
   ) : (
-    <ul class="post-list">
+    <ul class="entries">
       {posts.map((post) => (
-        <li>
-          <a class="title" href={postUrl(post)}>
-            {post.data.title}
-          </a>
-          <p>{post.data.description}</p>
-          <div class="meta">
-            <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+        <li class={`entry cat-${post.data.category}`}>
+          <time class="stamp" datetime={post.data.date.toISOString()}>
+            {stampDate(post.data.date)}
+          </time>
+          <div class="entry-body">
+            <a class="entry-title" href={postUrl(post)}>
+              {post.data.title}
+            </a>
+            <p>{post.data.description}</p>
             {showCategory && <span class="badge">{CATEGORY_LABEL[lang][post.data.category]}</span>}
           </div>
+          <a class="thumb" href={postUrl(post)} tabindex="-1" aria-hidden="true">
+            {post.data.cover ? (
+              <img src={post.data.cover} alt="" loading="lazy" decoding="async" />
+            ) : (
+              <CategoryIcon category={post.data.category} size={26} />
+            )}
+          </a>
         </li>
       ))}
     </ul>

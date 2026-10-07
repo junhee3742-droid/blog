@@ -10,6 +10,10 @@ export const UI = {
     otherLang: 'English',
     backToList: '← 목록으로',
     notFound: '페이지를 찾을 수 없어요.',
+    goHome: '홈으로 가기',
+    entries: '기록',
+    since: '첫 기록',
+    browse: '분야별로 보기',
   },
   en: {
     home: 'Home',
@@ -19,6 +23,10 @@ export const UI = {
     otherLang: '한국어',
     backToList: '← Back to list',
     notFound: 'Page not found.',
+    goHome: 'Go to home',
+    entries: 'Entries',
+    since: 'First entry',
+    browse: 'Browse by topic',
   },
 } satisfies Record<Lang, Record<string, string>>;
 
@@ -49,4 +57,15 @@ export function formatDate(date: Date, lang: Lang): string {
     day: 'numeric',
     timeZone: 'UTC',
   });
+}
+
+// 실험 노트 도장 같은 날짜: 2026.09.25
+export function stampDate(date: Date): string {
+  return date.toISOString().slice(0, 10).replace(/-/g, '.');
+}
+
+// 글 개수: '글 3편' / '3 posts'
+export function countLabel(n: number, lang: Lang): string {
+  if (lang === 'ko') return `글 ${n}편`;
+  return n === 1 ? '1 post' : `${n} posts`;
 }

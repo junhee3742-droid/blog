@@ -11,8 +11,11 @@ const lang = Astro.params.lang as Lang;
 ---
 
 <Base lang={lang} title={UI[lang].about} alternateUrl={`/${otherLang(lang)}/about/`}>
-  <section class="intro prose">
-    <h1>{UI[lang].about}</h1>
+  <section class="intro prose about">
+    <div class="about-head">
+      <h1>{UI[lang].about}</h1>
+      <img class="mascot" src="/mascot.svg" alt="" width="72" height="72" />
+    </div>
     {
       lang === 'ko' ? (
         <>

@@ -6,6 +6,9 @@ export type Lang = (typeof LANGS)[number];
 export const CATEGORIES = ['science', 'projects'] as const;
 export type Category = (typeof CATEGORIES)[number];
 
+// 배포 주소. og:image 처럼 전체 주소가 필요한 곳에 써요.
+export const SITE_URL = 'https://vibelabnotes.junhee3742.workers.dev';
+
 export const SITE = {
   title: {
     ko: 'Vibe Lab Notes',

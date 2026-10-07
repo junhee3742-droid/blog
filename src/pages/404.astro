@@ -6,9 +6,10 @@ const lang = Astro.url.pathname.startsWith('/en') ? 'en' : 'ko';
 ---
 
 <Base lang={lang} title="404">
-  <section class="intro">
-    <h1>404</h1>
-    <p>{UI[lang].notFound}</p>
-    <a href={`/${lang}/`}>{UI[lang].home}</a>
+  <section class="not-found">
+    <img class="mascot" src="/mascot.svg" alt="" width="132" height="132" />
+    <p class="not-found-code">404</p>
+    <h1>{UI[lang].notFound}</h1>
+    <a class="button" href={`/${lang}/`}>{UI[lang].goHome}</a>
   </section>
 </Base>
