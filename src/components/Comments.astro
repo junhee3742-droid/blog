@@ -1,0 +1,178 @@
+---
+// 글 아래 댓글창. 댓글은 /api/comments (worker/index.js, Cloudflare D1)에 저장돼요.
+import { TURNSTILE_SITE_KEY, type Lang } from '../config';
+import { UI } from '../i18n';
+
+interface Props {
+  /** 글 id, 예: 'ko/meet-neuroni' */
+  postId: string;
+  lang: Lang;
+}
+
+const { postId, lang } = Astro.props;
+const t = UI[lang];
+const messages = {
+  empty: t.commentEmpty,
+  posting: t.commentPosting,
+  posted: t.commentPosted,
+  error: t.commentError,
+  tooMany: t.commentTooMany,
+  captcha: t.commentCaptcha,
+  loadError: t.commentLoadError,
+  submit: t.commentSubmit,
+};
+---
+
+<section
+  class="comments"
+  id="comments"
+  data-post={postId}
+  data-lang={lang}
+  data-messages={JSON.stringify(messages)}
+>
+  <h2 class="comments-title">
+    {t.comments} <span class="comments-count" data-count></span>
+  </h2>
+
+  <ul class="comment-list" data-list></ul>
+  <p class="comment-empty" data-empty hidden>{t.commentEmpty}</p>
+
+  <form class="comment-form" data-form novalidate>
+    <label class="comment-field">
+      <span>{t.commentName}</span>
+      <input name="name" type="text" maxlength="30" required autocomplete="nickname" />
+    </label>
+    <label class="comment-field">
+      <span>{t.commentBody}</span>
+      <textarea name="body" rows="4" maxlength="2000" required></textarea>
+    </label>
+    {/* 로봇 함정: 사람에게는 안 보이는 칸 */}
+    <div class="comment-hp" aria-hidden="true">
+      <label>Website <input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+    </div>
+    {TURNSTILE_SITE_KEY && <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>}
+    <div class="comment-actions">
+      <button class="button" type="submit">{t.commentSubmit}</button>
+      <span class="comment-hint">{t.commentNote}</span>
+    </div>
+    <p class="comment-status" data-status role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+{
+  TURNSTILE_SITE_KEY && (
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  )
+}
+
+<script>
+  type Comment = { id: number; name: string; body: string; created_at: string };
+
+  function formatTime(iso: string, lang: string): string {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '';
+    return d.toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  }
+
+  function renderItem(c: Comment, lang: string): HTMLLIElement {
+    const li = document.createElement('li');
+    li.className = 'comment';
+    const head = document.createElement('div');
+    head.className = 'comment-head';
+    const name = document.createElement('strong');
+    name.textContent = c.name;
+    const time = document.createElement('time');
+    time.className = 'stamp';
+    time.dateTime = c.created_at;
+    time.textContent = formatTime(c.created_at, lang);
+    head.append(name, time);
+    const body = document.createElement('p');
+    body.className = 'comment-body';
+    body.textContent = c.body; // 글자 그대로 표시 (HTML 해석 안 함)
+    li.append(head, body);
+    return li;
+  }
+
+  for (const section of document.querySelectorAll<HTMLElement>('section.comments')) {
+    const post = section.dataset.post ?? '';
+    const lang = section.dataset.lang ?? 'ko';
+    const msg = JSON.parse(section.dataset.messages ?? '{}') as Record<string, string>;
+    const list = section.querySelector<HTMLUListElement>('[data-list]')!;
+    const empty = section.querySelector<HTMLElement>('[data-empty]')!;
+    const count = section.querySelector<HTMLElement>('[data-count]')!;
+    const form = section.querySelector<HTMLFormElement>('[data-form]')!;
+    const status = section.querySelector<HTMLElement>('[data-status]')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    let total = 0;
+
+    const setCount = (n: number) => {
+      total = n;
+      count.textContent = n > 0 ? String(n) : '';
+      empty.hidden = n > 0;
+    };
+
+    fetch(`/api/comments?post=${encodeURIComponent(post)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((data: { comments: Comment[] }) => {
+        for (const c of data.comments) list.append(renderItem(c, lang));
+        setCount(data.comments.length);
+      })
+      .catch(() => {
+        empty.hidden = false;
+        empty.textContent = msg.loadError;
+      });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const fd = new FormData(form);
+      const name = String(fd.get('name') ?? '').trim();
+      const body = String(fd.get('body') ?? '').trim();
+      if (!name || !body) {
+        form.reportValidity();
+        return;
+      }
+      button.disabled = true;
+      button.textContent = msg.posting;
+      status.textContent = '';
+      try {
+        const res = await fetch('/api/comments', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            post,
+            name,
+            body,
+            website: String(fd.get('website') ?? ''),
+            turnstileToken: String(fd.get('cf-turnstile-response') ?? ''),
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.comment) {
+          list.append(renderItem(data.comment as Comment, lang));
+          setCount(total + 1);
+          (form.elements.namedItem('body') as HTMLTextAreaElement).value = '';
+          status.textContent = msg.posted;
+        } else if (res.status === 429) {
+          status.textContent = msg.tooMany;
+        } else if (data.error === 'captcha_failed') {
+          status.textContent = msg.captcha;
+        } else {
+          status.textContent = msg.error;
+        }
+      } catch {
+        status.textContent = msg.error;
+      } finally {
+        button.disabled = false;
+        button.textContent = msg.submit;
+        // Turnstile 토큰은 한 번만 쓸 수 있어서 새로 받아요.
+        (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
+      }
+    });
+  }
+</script>

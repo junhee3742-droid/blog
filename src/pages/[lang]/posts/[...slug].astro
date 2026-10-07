@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
+import Comments from '../../../components/Comments.astro';
 import type { Lang } from '../../../config';
 import { CATEGORY_LABEL, UI, formatDate, noteNumber, noteOpenLabel, stampDate } from '../../../i18n';
 import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
@@ -87,6 +88,8 @@ const translation = await findTranslation(post);
         </div>
       )
     }
+
+    <Comments postId={post.id} lang={lang} />
 
     <a class="back" href={`/${lang}/`}>{UI[lang].backToList}</a>
   </article>

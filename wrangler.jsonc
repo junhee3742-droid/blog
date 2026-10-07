@@ -1,0 +1,18 @@
+// Cloudflare Workers 배포 설정.
+// - 블로그 페이지(dist/)는 정적 파일로 그대로 서비스
+// - /api/* 요청만 worker/index.js 가 처리 (댓글 API)
+// - 댓글 DB(D1)는 처음 배포할 때 Cloudflare가 자동으로 만들어요 (database_id 없이 binding 만 적음)
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vibelabnotes",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [{ "binding": "DB" }],
+  "observability": { "enabled": true }
+}

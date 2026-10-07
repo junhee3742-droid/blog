@@ -25,6 +25,13 @@
 
 설정 파일: `public/admin/config.yml`
 
+## 댓글
+
+- 모든 글 아래에 댓글창이 있어요. 독자는 로그인 없이 닉네임만 쓰면 돼요.
+- 댓글은 Cloudflare D1 데이터베이스에 저장돼요 (`worker/index.js`, 설정은 `wrangler.jsonc`).
+- 스팸 방지: 로봇 함정 칸, 같은 사람은 10분에 5개까지. 더 필요하면 Turnstile(로봇 확인)을 켜요: `src/config.ts`의 `TURNSTILE_SITE_KEY` + Cloudflare 비밀값 `TURNSTILE_SECRET`.
+- 댓글 지우기: `블로그주소/admin/comments.html` 에서 관리자 비밀번호로 로그인. 비밀번호는 Cloudflare 대시보드 → Workers → vibelabnotes → Settings → Variables and Secrets 에 `ADMIN_PASSWORD`(Secret)로 넣어요.
+
 ## 파일로 직접 새 글 쓰기
 
 1. `templates/post-template.md` 를 복사해서 `src/content/posts/ko/` 에 넣어요. 파일 이름이 주소가 돼요 (예: `paper-collector.md` → `/ko/posts/paper-collector/`). 파일 이름은 영어 소문자와 `-` 로 쓰는 걸 추천해요.
