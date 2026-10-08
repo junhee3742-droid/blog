@@ -13,6 +13,8 @@
 | `/ko/posts/<파일이름>/` | 글 한 편 |
 | `/ko/about/` | 소개 |
 | `/admin/` | 글 관리 화면 (본인만 로그인 가능) |
+| `/ko/rss.xml`, `/en/rss.xml` | RSS 피드 (새 글 최대 50개) |
+| `/ko/subscribe/` | 구독 안내 (Feedly·Inoreader 버튼, 주소 복사) |
 
 ## 관리자 화면에서 글 쓰기 (추천)
 

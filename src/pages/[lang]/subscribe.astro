@@ -1,0 +1,82 @@
+---
+// 구독 안내 페이지: RSS가 낯선 독자도 쉽게 구독할 수 있게
+import Base from '../../layouts/Base.astro';
+import { LANGS, SITE_URL, type Lang } from '../../config';
+import { UI, otherLang } from '../../i18n';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const feedUrl = `${SITE_URL}/${lang}/rss.xml`;
+const feedly = `https://feedly.com/i/subscription/feed/${encodeURIComponent(feedUrl)}`;
+const inoreader = `https://www.inoreader.com/?add_feed=${encodeURIComponent(feedUrl)}`;
+const ko = lang === 'ko';
+---
+
+<Base
+  lang={lang}
+  title={UI[lang].subscribe}
+  description={ko ? 'Vibe Lab Notes 새 글을 RSS로 받아보는 방법' : 'Get new Vibe Lab Notes posts via RSS'}
+  alternateUrl={`/${otherLang(lang)}/subscribe/`}
+>
+  <section class="intro prose subscribe">
+    <div class="about-head">
+      <h1>{UI[lang].subscribe}</h1>
+      <img class="mascot" src="/stickers/thumbs-up.svg" alt="" width="72" height="72" />
+    </div>
+
+    <p>
+      {
+        ko
+          ? '새 노트가 올라오면 알림으로 받아보세요. 이메일 주소 같은 개인정보는 필요 없어요.'
+          : 'Get notified when a new note is posted. No email or personal info needed.'
+      }
+    </p>
+
+    <h2>{ko ? '가장 쉬운 방법: 구독 앱에서 한 번에 추가' : 'Easiest: add it in a reader app'}</h2>
+    <p>{ko ? '아래 버튼을 누르고, 열린 화면에서 "Follow" 또는 "구독"을 누르면 끝이에요.' : 'Click a button below, then "Follow" on the page that opens.'}</p>
+    <p class="subscribe-buttons">
+      <a class="button" href={feedly} target="_blank" rel="noopener">{ko ? 'Feedly로 구독하기' : 'Subscribe with Feedly'}</a>
+      <a class="button button-ghost" href={inoreader} target="_blank" rel="noopener">{ko ? 'Inoreader로 구독하기' : 'Subscribe with Inoreader'}</a>
+    </p>
+
+    <h2>{ko ? '다른 앱을 쓴다면: 주소 복사' : 'Using another app? Copy the address'}</h2>
+    <p>{ko ? 'RSS 앱의 "피드 추가"에 이 주소를 붙여 넣으세요.' : 'Paste this address into "Add feed" in your RSS app.'}</p>
+    <p class="feed-box">
+      <code data-feed>{feedUrl}</code>
+      <button class="button" type="button" data-copy data-done={ko ? '복사했어요!' : 'Copied!'}>{ko ? '주소 복사' : 'Copy'}</button>
+    </p>
+
+    <h2>{ko ? 'RSS가 뭐예요?' : 'What is RSS?'}</h2>
+    <p>
+      {
+        ko
+          ? '여러 블로그와 뉴스의 새 글을 한곳에 모아 보는 방법이에요. 구독해 두면 블로그에 직접 들어오지 않아도 새 글을 놓치지 않아요. 언제든 앱에서 구독을 끊을 수 있어요.'
+          : 'RSS collects new posts from many sites in one place, so you never miss a post without having to check each site. You can unsubscribe in your app at any time.'
+      }
+    </p>
+  </section>
+</Base>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const code = document.querySelector<HTMLElement>('[data-feed]');
+  if (btn && code) {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent ?? '');
+        const label = btn.textContent;
+        btn.textContent = btn.dataset.done ?? 'OK';
+        setTimeout(() => (btn.textContent = label), 2000);
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    });
+  }
+</script>

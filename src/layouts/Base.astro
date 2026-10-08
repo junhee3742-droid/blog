@@ -42,6 +42,7 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
     <meta name="theme-color" content="#f6f7f4" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#121a24" media="(prefers-color-scheme: dark)" />
     <link rel="alternate" hreflang={other} href={switchUrl} />
+    <link rel="alternate" type="application/rss+xml" title={`${siteTitle} (RSS)`} href={`/${lang}/rss.xml`} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
@@ -88,6 +89,7 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
       <div class="container">
         <Logo size={18} />
         <span>© {new Date().getFullYear()} {siteTitle}</span>
+        <a class="footer-rss" href={`/${lang}/subscribe/`}>RSS · {t.subscribe}</a>
       </div>
     </footer>
   </body>

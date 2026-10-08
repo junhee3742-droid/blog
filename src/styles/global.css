@@ -376,3 +376,14 @@ main { padding: 40px 0 72px; }
 .comment-actions .button:disabled { opacity: 0.6; cursor: wait; }
 .comment-hint { font-size: 0.85rem; color: var(--muted); }
 .comment-status { margin: 0; font-size: 0.92rem; color: var(--accent); min-height: 1.2em; }
+
+/* 구독 */
+.footer-rss { margin-left: auto; font-size: 0.85rem; }
+.subscribe-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.button-ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.feed-box {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 14px; border: 1px dashed var(--rule-strong); border-radius: 10px; background: var(--surface);
+}
+.feed-box code { flex: 1 1 240px; overflow-wrap: anywhere; background: none; padding: 0; }
+.feed-box .button { border: 0; cursor: pointer; font: inherit; }
