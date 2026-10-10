@@ -3,12 +3,12 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Comments from '../../../components/Comments.astro';
 import type { Lang } from '../../../config';
-import { CATEGORY_LABEL, UI, formatDate, noteNumber, noteOpenLabel, stampDate } from '../../../i18n';
+import { CATEGORY_LABEL, NOTE_KIND, UI, formatDate, noteNumber, noteOpenLabel, stampDate } from '../../../i18n';
 import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  // 노트 번호: 언어별로 오래된 글부터 1, 2, 3...
+  // 노트 번호: 언어·카테고리별로 오래된 글부터 1, 2, 3...
   const byDate = [...posts].sort(
     (a, b) => a.data.date.valueOf() - b.data.date.valueOf() || a.id.localeCompare(b.id),
   );
@@ -16,7 +16,9 @@ export async function getStaticPaths() {
     params: { lang: post.data.lang, slug: postSlug(post) },
     props: {
       post,
-      noteNo: byDate.filter((p) => p.data.lang === post.data.lang).findIndex((p) => p.id === post.id) + 1,
+      noteNo: byDate
+        .filter((p) => p.data.lang === post.data.lang && p.data.category === post.data.category)
+        .findIndex((p) => p.id === post.id) + 1,
     },
   }));
 }
@@ -65,7 +67,7 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
     <p class="note-open">
       <img src="/stickers/happy.svg" alt="" width="44" height="44" />
       <span>
-        {noteOpenLabel(noteNo, lang)} · <span class="stamp">{stampDate(post.data.date)}</span>
+        {noteOpenLabel(noteNo, lang, post.data.category)} · <span class="stamp">{stampDate(post.data.date)}</span>
       </span>
     </p>
 
@@ -73,7 +75,7 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
       <Content />
     </div>
 
-    <aside class="note-close" aria-label={noteNumber(noteNo)}>
+    <aside class="note-close" aria-label={`${NOTE_KIND[lang][post.data.category]} ${noteNumber(noteNo)}`}>
       <img src="/mascot.svg" alt="" width="72" height="72" loading="lazy" />
       <div>
         <p class="note-close-main">{UI[lang].noteClose}</p>

@@ -107,7 +107,21 @@ export function noteNumber(n: number): string {
   return `No.${String(n).padStart(3, '0')}`;
 }
 
-// 글 맨 위 인사: 'No.003 노트를 펼쳐요' / 'Opening note No.003'
-export function noteOpenLabel(n: number, lang: Lang): string {
-  return lang === 'ko' ? `${noteNumber(n)} 노트를 펼쳐요` : `Opening note ${noteNumber(n)}`;
+// 카테고리별 노트 이름: 과학 = 연구 노트, 개발 = 개발 노트
+export const NOTE_KIND: Record<Lang, Record<Category, string>> = {
+  ko: { science: '연구 노트', projects: '개발 노트' },
+  en: { science: 'Research note', projects: 'Dev note' },
+};
+
+// 숫자를 한국어로 읽을 때 받침에 맞는 조사 (1=일→을, 2=이→를 ...)
+function objectParticle(n: number): string {
+  return [2, 4, 5, 9].includes(n % 10) ? '를' : '을';
+}
+
+// 글 맨 위 인사: '연구 노트 No.001을 펼쳐요' / 'Opening research note No.001'
+export function noteOpenLabel(n: number, lang: Lang, category: Category): string {
+  const kind = NOTE_KIND[lang][category];
+  return lang === 'ko'
+    ? `${kind} ${noteNumber(n)}${objectParticle(n)} 펼쳐요`
+    : `Opening ${kind.toLowerCase()} ${noteNumber(n)}`;
 }
