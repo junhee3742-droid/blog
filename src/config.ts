@@ -23,3 +23,9 @@ export const SITE = {
 // 댓글: Cloudflare Turnstile(로봇 확인) 사이트 키. 비워 두면 로봇 확인 없이 동작해요.
 // 켜려면 여기에 사이트 키를 넣고, Worker 비밀값 TURNSTILE_SECRET 도 같이 설정하세요.
 export const TURNSTILE_SITE_KEY: string = '';
+
+// 검색엔진 소유 확인 코드. 구글 서치 콘솔·네이버 서치어드바이저가 주는 meta 태그의 content 값만 넣어요.
+export const SITE_VERIFICATION = {
+  google: '',
+  naver: '',
+};
