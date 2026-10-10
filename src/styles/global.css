@@ -188,13 +188,14 @@ main { padding: 40px 0 72px; }
 .entries { list-style: none; margin: 0; padding: 0; }
 .entry {
   display: grid;
-  grid-template-columns: 6.6rem minmax(0, 1fr) 112px;
-  grid-template-areas: 'stamp body thumb';
+  grid-template-columns: 6.6rem minmax(0, 1fr);
+  grid-template-areas: 'stamp body';
   gap: 4px 20px;
   padding: 22px 0;
   border-bottom: 1px solid var(--rule);
 }
 .entry:first-child { padding-top: 8px; }
+.entry.has-thumb { grid-template-columns: 6.6rem minmax(0, 1fr) 112px; grid-template-areas: 'stamp body thumb'; }
 .stamp {
   font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);
   letter-spacing: 0.02em; white-space: nowrap;
@@ -313,9 +314,16 @@ main { padding: 40px 0 72px; }
   .plate-meta { gap: 20px; flex-wrap: wrap; }
   .intro h1 { font-size: 1.6rem; }
   .post-header h1 { font-size: 1.65rem; }
-  .entry {
+  .entry,
+  .entry.has-thumb {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'stamp' 'body';
+  }
+  .entry.has-thumb {
     grid-template-columns: minmax(0, 1fr) 76px;
     grid-template-areas: 'stamp stamp' 'body thumb';
+  }
+  .entry {
     gap: 4px 14px;
     padding: 18px 0;
   }

@@ -6,6 +6,8 @@ lang: ko
 category: projects
 tags: [마스코트, 스티커, 뉴런, 바이브코딩]
 translationKey: meet-neuroni
+cover: /images/posts/meet-neuroni-cover.png
+coverAlt: 뉴로니와 스티커 친구들
 ---
 
 안녕하세요! Vibe Lab Notes에 마스코트가 생겼어요. 이름은 **뉴로니**(Neuroni)예요.
