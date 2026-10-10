@@ -6,6 +6,8 @@ const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
     title: z.string(),
+    // 부제(선택). 글 제목 아래 한 줄로 보이고, 검색 결과 제목에는 '제목 – 부제'로 붙어요.
+    subtitle: z.string().optional(),
     description: z.string(),
     date: z.coerce.date(),
     lang: z.enum(['ko', 'en']),

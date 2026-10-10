@@ -30,6 +30,7 @@ const { posts, lang, showCategory = true } = Astro.props;
             <a class="entry-title" href={postUrl(post)}>
               {post.data.title}
             </a>
+            {post.data.subtitle && <span class="entry-subtitle">{post.data.subtitle}</span>}
             <p>{post.data.description}</p>
             {showCategory && <span class="badge">{CATEGORY_LABEL[lang][post.data.category]}</span>}
           </div>

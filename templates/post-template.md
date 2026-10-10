@@ -1,5 +1,6 @@
 ---
 title: 글 제목
+subtitle: 부제 (선택, 지워도 돼요)
 description: 검색 결과와 목록에 보일 한두 문장 요약
 date: 2026-01-01
 lang: ko            # ko 또는 en

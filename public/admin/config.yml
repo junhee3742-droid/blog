@@ -36,6 +36,7 @@ collections:
     sortable_fields: [date, title]
     fields:
       - { name: title, label: 제목, widget: string }
+      - { name: subtitle, label: 부제 (제목 아래 한 줄, 검색어를 넣으면 좋아요), widget: string, required: false }
       - { name: description, label: 요약 (목록과 검색 결과에 보여요), widget: text }
       - name: date
         label: 날짜
@@ -75,6 +76,7 @@ collections:
     sortable_fields: [date, title]
     fields:
       - { name: title, label: Title, widget: string }
+      - { name: subtitle, label: Subtitle, widget: string, required: false }
       - { name: description, label: Summary, widget: text }
       - name: date
         label: Date

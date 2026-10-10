@@ -30,11 +30,12 @@ const { post, noteNo } = Astro.props;
 const lang = post.data.lang as Lang;
 const { Content } = await render(post);
 const translation = await findTranslation(post);
+const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subtitle}` : post.data.title;
 ---
 
 <Base
   lang={lang}
-  title={post.data.title}
+  title={fullTitle}
   description={post.data.description}
   alternateUrl={translation ? postUrl(translation) : undefined}
   image={post.data.cover}
@@ -58,6 +59,7 @@ const translation = await findTranslation(post);
         </time>
       </div>
       <h1>{post.data.title}</h1>
+      {post.data.subtitle && <p class="post-subtitle">{post.data.subtitle}</p>}
     </header>
 
     <p class="note-open">

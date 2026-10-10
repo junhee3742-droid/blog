@@ -387,3 +387,7 @@ main { padding: 40px 0 72px; }
 }
 .feed-box code { flex: 1 1 240px; overflow-wrap: anywhere; background: none; padding: 0; }
 .feed-box .button { border: 0; cursor: pointer; font: inherit; }
+
+/* 부제 */
+.post-subtitle { margin: 8px 0 0; font-size: 1.12rem; color: var(--muted); line-height: 1.5; }
+.entry-subtitle { display: block; margin-top: 2px; font-size: 0.95rem; color: var(--muted); }

@@ -20,7 +20,7 @@ export const GET: APIRoute = async ({ params }) => {
     feedUrl: `${homeUrl}rss.xml`,
     language: lang === 'ko' ? 'ko-KR' : 'en-US',
     items: posts.map((post) => ({
-      title: post.data.title,
+      title: post.data.subtitle ? `${post.data.title} – ${post.data.subtitle}` : post.data.title,
       url: `${SITE_URL}${postUrl(post)}`,
       date: post.data.date,
       description: post.data.description,
