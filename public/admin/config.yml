@@ -6,8 +6,8 @@ backend:
   repo: junhee3742-droid/blog
   branch: main
 
-site_url: https://vibelabnotes.junhee3742.workers.dev
-display_url: https://vibelabnotes.junhee3742.workers.dev
+site_url: https://vibelabnotes.com
+display_url: https://vibelabnotes.com
 
 # 글에 올리는 이미지가 저장되는 곳
 media_folder: /public/images/posts
