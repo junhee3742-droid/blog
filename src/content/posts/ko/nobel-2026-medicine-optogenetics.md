@@ -1,5 +1,4 @@
 ---
-translationKey: ''
 title: '[2026 노벨생리의학상] 녹조류의 눈이 뇌과학을 바꿨다'
 subtitle: 노벨 생리의학상 광유전학, 빛으로 신경세포를 켜고 끄는 기술 쉽게 이해하기
 description: 2026년 노벨 생리의학상은 빛으로 신경세포를 켜고 끄는 광유전학에 돌아갔어요. 녹조류의 빛 감지 단백질이 어떻게 뇌과학의 핵심 도구가 됐는지 쉽게 정리했어요.
@@ -13,8 +12,8 @@ tags:
   - 채널로돕신
   - 신경과학
 draft: false
-cover: /images/posts/생리 대표.jpg
-coverAlt: ''
+cover: /images/posts/nobel-2026-medicine-cover.jpg
+coverAlt: 녹조류가 비춘 파란 빛을 받고 환하게 켜진 뉴로니
 ---
 
 2026년 노벨 생리의학상이 발표됐어요. 주인공은 **광유전학**(optogenetics), 빛으로 신경세포를 켜고 끄는 기술이에요.
@@ -67,7 +66,7 @@ coverAlt: ''
 
 다이서로스 연구팀이 이걸 실제로 해냈어요. 2005년, 채널로돕신-2 유전자를 포유류 신경세포에 넣고 파란 빛을 깜빡이자, 신경세포가 빛에 맞춰 **천분의 일 초 단위로 정확하게** 켜졌어요.
 
-![](/images/posts/%EC%83%9D%EB%A6%AC%20%EB%B3%B8%EB%AC%B8.jpg)
+![빛이 없으면 잠든 뉴로니, 파란 빛을 받으면 이온이 들어와 깨어나는 뉴로니](/images/posts/nobel-2026-medicine-switch.jpg)
 
 이름 그대로예요.
 
