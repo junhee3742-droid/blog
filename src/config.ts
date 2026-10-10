@@ -26,6 +26,6 @@ export const TURNSTILE_SITE_KEY: string = '';
 
 // 검색엔진 소유 확인 코드. 구글 서치 콘솔·네이버 서치어드바이저가 주는 meta 태그의 content 값만 넣어요.
 export const SITE_VERIFICATION = {
-  google: '',
+  google: 'nXpucrIntKBT_Z96MqjkuNGFCltBYszUql2h0Evy6o4',
   naver: '',
 };
