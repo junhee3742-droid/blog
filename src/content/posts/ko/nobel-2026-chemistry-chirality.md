@@ -11,7 +11,7 @@ tags:
   - 키랄성
   - 비대칭합성
   - 호모키랄성
-draft: true
+draft: false
 cover: /images/posts/nobel-2026-chemistry-cover.jpg
 coverAlt: 거울 앞에서 분자 모형을 들고 있는 뉴로니
 ---
