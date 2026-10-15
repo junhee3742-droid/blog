@@ -1,4 +1,5 @@
 ---
+translationKey: ''
 title: '[임상시험 소식] 맞춤형 암백신, 드디어 임상 3상을 넘다'
 subtitle: 모더나·MSD mRNA 암백신 흑색종 3상 결과와 아직 모르는 것들 (2026년 10월 기준)
 description: 2026년 8월, 환자마다 따로 만드는 mRNA 암백신이 흑색종 임상 3상에서 처음으로 목표를 달성했어요. 결과의 의미와 아직 공개되지 않은 부분, 아깝게 실패한 다른 암백신까지 출처와 함께 정리했어요.
@@ -12,7 +13,7 @@ tags:
   - 흑색종
   - 면역항암제
   - 신약
-draft: true
+draft: false
 cover: /images/posts/cancer-vaccine-cover.jpg
 coverAlt: mRNA 백신 주사기를 든 뉴로니와 방패를 든 면역세포들 앞에서 겁먹은 암세포
 ---
