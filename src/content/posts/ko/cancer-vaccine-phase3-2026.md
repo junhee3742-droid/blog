@@ -1,5 +1,4 @@
 ---
-translationKey: ''
 title: '[임상시험 소식] 맞춤형 암백신, 드디어 임상 3상을 넘다'
 subtitle: 모더나·MSD mRNA 암백신 흑색종 3상 결과와 아직 모르는 것들 (2026년 10월 기준)
 description: 2026년 8월, 환자마다 따로 만드는 mRNA 암백신이 흑색종 임상 3상에서 처음으로 목표를 달성했어요. 결과의 의미와 아직 공개되지 않은 부분, 아깝게 실패한 다른 암백신까지 출처와 함께 정리했어요.
@@ -14,8 +13,8 @@ tags:
   - 면역항암제
   - 신약
 draft: true
-cover: /images/posts/11.jpg
-coverAlt: ''
+cover: /images/posts/cancer-vaccine-cover.jpg
+coverAlt: mRNA 백신 주사기를 든 뉴로니와 방패를 든 면역세포들 앞에서 겁먹은 암세포
 ---
 
 2026년 8월, 암 치료 분야에서 큰 소식이 나왔어요. 모더나와 MSD(미국 머크)가 함께 개발한 **개인 맞춤형 mRNA 암백신**이 흑색종 임상 3상에서 1차 목표를 달성했다고 발표한 거예요.
@@ -36,7 +35,7 @@ coverAlt: ''
 - 환자의 종양 조직을 유전자 분석해서 이 신생항원을 찾아내요.
 - 그 정보를 mRNA에 담아 **그 환자만을 위한 백신**을 만들어요.
 
-![](/images/posts/2.jpg)
+![종양 샘플에서 돌연변이를 찾아 mRNA에 담고, 면역세포가 그 정보로 암세포를 알아보는 맞춤형 암백신 제작 과정](/images/posts/cancer-vaccine-process.jpg)
 
 이번 주인공인 **인티스메란**(intismeran autogene)은 한 번에 최대 **34개**의 신생항원 정보를 담아요.
 
@@ -55,7 +54,7 @@ coverAlt: ''
 
 쉽게 말하면, 수술 뒤 면역항암제 **키트루다만 맞은 환자들보다 백신을 함께 맞은 환자들에게서 암이 다시 생기거나 멀리 퍼지는 경우가 통계적으로 의미 있게 줄었다**는 뜻이에요. 안전성에서는 새로운 이상 신호가 없었다고 했어요.
 
-![](/images/posts/3.jpg)
+![저울을 든 뉴로니 양쪽으로, 방패만 든 면역세포들과 mRNA 지도까지 든 면역세포들을 비교한 그림](/images/posts/cancer-vaccine-phase3-compare.jpg)
 
 ### 왜 중요할까요?
 
@@ -66,7 +65,7 @@ coverAlt: ''
 
 ## 아직 모르는 것들
 
-![](/images/posts/4.jpg)
+![물음표 조각이 비어 있는 퍼즐 앞에서 달력과 모래시계를 두고 고민하는 뉴로니](/images/posts/cancer-vaccine-unknowns.jpg)
 
 기쁜 소식이지만, 꼭 함께 알아 둬야 할 부분이 있어요.
 
