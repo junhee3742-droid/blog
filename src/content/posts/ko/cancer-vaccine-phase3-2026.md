@@ -1,4 +1,5 @@
 ---
+translationKey: ''
 title: '[임상시험 소식] 맞춤형 암백신, 드디어 임상 3상을 넘다'
 subtitle: 모더나·MSD mRNA 암백신 흑색종 3상 결과와 아직 모르는 것들 (2026년 10월 기준)
 description: 2026년 8월, 환자마다 따로 만드는 mRNA 암백신이 흑색종 임상 3상에서 처음으로 목표를 달성했어요. 결과의 의미와 아직 공개되지 않은 부분, 아깝게 실패한 다른 암백신까지 출처와 함께 정리했어요.
@@ -13,6 +14,8 @@ tags:
   - 면역항암제
   - 신약
 draft: true
+cover: /images/posts/11.jpg
+coverAlt: ''
 ---
 
 2026년 8월, 암 치료 분야에서 큰 소식이 나왔어요. 모더나와 MSD(미국 머크)가 함께 개발한 **개인 맞춤형 mRNA 암백신**이 흑색종 임상 3상에서 1차 목표를 달성했다고 발표한 거예요.
@@ -33,7 +36,7 @@ draft: true
 - 환자의 종양 조직을 유전자 분석해서 이 신생항원을 찾아내요.
 - 그 정보를 mRNA에 담아 **그 환자만을 위한 백신**을 만들어요.
 
-![아이디어](/stickers/idea.svg)
+![](/images/posts/2.jpg)
 
 이번 주인공인 **인티스메란**(intismeran autogene)은 한 번에 최대 **34개**의 신생항원 정보를 담아요.
 
@@ -42,7 +45,7 @@ draft: true
 | 항목 | 내용 |
 | --- | --- |
 | 개발사 | 모더나 · MSD |
-| 대상 | 수술로 완전히 제거한 2B~4기 피부 흑색종 환자 |
+| 대상 | 수술로 완전히 제거한 2B\~4기 피부 흑색종 환자 |
 | 규모 | 1,137명, 2:1 무작위 배정, 이중맹검 |
 | 비교 | 인티스메란 + 키트루다 vs 키트루다 + 위약 |
 | 투여 | 인티스메란 3주마다 최대 9회, 키트루다 6주마다 최대 9회 (약 1년) |
@@ -51,6 +54,8 @@ draft: true
 | 발표 | 2026년 8월 19일, 회사 보도자료 |
 
 쉽게 말하면, 수술 뒤 면역항암제 **키트루다만 맞은 환자들보다 백신을 함께 맞은 환자들에게서 암이 다시 생기거나 멀리 퍼지는 경우가 통계적으로 의미 있게 줄었다**는 뜻이에요. 안전성에서는 새로운 이상 신호가 없었다고 했어요.
+
+![](/images/posts/3.jpg)
 
 ### 왜 중요할까요?
 
@@ -61,7 +66,7 @@ draft: true
 
 ## 아직 모르는 것들
 
-![주의](/stickers/caution.svg)
+![](/images/posts/4.jpg)
 
 기쁜 소식이지만, 꼭 함께 알아 둬야 할 부분이 있어요.
 
@@ -89,8 +94,8 @@ draft: true
 | 항목 | 실렘비오 + 키트루다 | 키트루다 단독 |
 | --- | --- | --- |
 | 무진행 생존 중앙값 | 19.4개월 | 11.0개월 |
-| 위험비 | 0.77 (95% 신뢰구간 0.58–1.00) | |
-| p값 | 0.0558 (기준: 0.045 이하) | |
+| 위험비 | 0.77 (95% 신뢰구간 0.58–1.00) |  |
+| p값 | 0.0558 (기준: 0.045 이하) |  |
 
 숫자만 보면 8개월 넘게 차이가 나요. 그런데 미리 정한 통계 기준(p ≤ 0.045)을 넘지 못해서 공식적으로는 **실패**예요. 2025년 9월 미국 FDA는 이 데이터로는 허가 신청을 하지 말라고 권고했고, 회사는 인력을 약 절반으로 줄였어요.
 
@@ -103,7 +108,7 @@ draft: true
 | 시험 | 약물 | 대상 | 예정 인원 |
 | --- | --- | --- | --- |
 | INTerpath-002 | 인티스메란 + 키트루다 | 수술한 비소세포폐암 | 868명 |
-| NCT06623422 | 인티스메란 + 키트루다 | 수술 가능한 2~3B기 비소세포폐암 | 680명 |
+| NCT06623422 | 인티스메란 + 키트루다 | 수술 가능한 2\~3B기 비소세포폐암 | 680명 |
 | INTerpath-014 | 인티스메란 + 피하주사 키트루다 | 수술한 비소세포폐암 | 876명 |
 | ARTEMIA | OSE2101 (오세 이뮤노) | 면역항암제에 내성이 생긴 전이성 비소세포폐암 (HLA-A2 양성) | 약 363명, 항암제 도세탁셀과 비교 |
 
@@ -135,7 +140,7 @@ FDA가 승인한 치료용 암백신이 이번이 처음은 아니에요. 2010�
 - [Merck and Moderna Announce Phase 3 INTerpath-001 Trial Met Endpoints of RFS and DMFS – Merck (2026-08-19)](https://www.merck.com/news/merck-and-moderna-announce-phase-3-interpath-001-trial-of-intismeran-autogene-plus-keytruda-met-endpoints-of-recurrence-free-survival-rfs-and-distant-metastasis-free-survival-dmfs-in-patient/)
 - [Recapping Positive Phase 3 Topline Results for Intismeran – Moderna](https://www.modernatx.com/ir-insights-phase-3-intesmeran)
 - [INTerpath-001 Trial Meets Primary and Key Secondary Endpoints – The ASCO Post](https://ascopost.com/news/august-2026/interpath-001-trial-of-mrna-based-individualized-neoantigen-therapy-meets-primary-and-key-secondary-endpoints-in-patients-with-high-risk-resected-melanoma/)
-- [Weber JS et al. KEYNOTE-942, The Lancet 2024;403:632–44](https://doi.org/10.1016/S0140-6736(23)02268-7)
+- [Weber JS et al. KEYNOTE-942, The Lancet 2024;403:632–44](https://doi.org/10.1016/S0140-6736\(23\)02268-7)
 - [IO Biotech Provides Update Following Pre-BLA Meeting with FDA – IO Biotech (2025-09-29)](https://www.biospace.com/press-releases/io-biotech-provides-update-following-pre-bla-meeting-with-fda)
 - [After Narrow Miss in Phase 3 Study, IO Biotech Ponders Next Steps – AJMC (2025-10-22)](https://www.ajmc.com/view/after-narrow-miss-in-phase-3-study-io-biotech-ponders-next-steps-for-immune-modulatory-off-the-shelf-cancer-vaccine)
 - [Kantoff PW et al. Sipuleucel-T Immunotherapy for Castration-Resistant Prostate Cancer, N Engl J Med 2010;363:411–22](https://doi.org/10.1056/NEJMoa1001294)
