@@ -95,5 +95,9 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
         <a class="footer-rss" href={`/${lang}/subscribe/`}>RSS · {t.subscribe}</a>
       </div>
     </footer>
+    <script is:inline>
+      // 방문자 수 세기 (worker/index.js 의 /api/visit). 실패해도 페이지에는 영향이 없어요.
+      try { navigator.sendBeacon('/api/visit'); } catch {}
+    </script>
   </body>
 </html>
