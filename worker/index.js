@@ -4,6 +4,8 @@
 //   POST   /api/comments                     → 댓글 쓰기 { post, name, body, website(함정), turnstileToken? }
 //   GET    /api/admin/comments               → 최근 댓글 전체 (관리자)
 //   DELETE /api/admin/comments/:id           → 댓글 삭제 (관리자)
+//   POST   /api/visit                        → 방문 기록 (모든 페이지가 열릴 때 보내요)
+//   GET    /api/admin/stats                  → 오늘·누적 방문자, 최근 30일 (관리자)
 //
 // 비밀값 (Cloudflare 대시보드 > Workers > vibelabnotes > Settings > Variables and Secrets):
 //   ADMIN_PASSWORD   관리자 비밀번호. 없으면 관리자 기능이 꺼져 있어요.
@@ -35,6 +37,21 @@ async function ensureSchema(db) {
     ),
     db.prepare('CREATE INDEX IF NOT EXISTS idx_comments_post ON comments (post, created_at)'),
     db.prepare('CREATE INDEX IF NOT EXISTS idx_comments_ip ON comments (ip_hash, created_at)'),
+    // 방문자: 하루에 한 사람(IP+브라우저)은 한 번만 세요. 해시에 날짜를 섞어서 날마다 달라지게 해요.
+    db.prepare(
+      `CREATE TABLE IF NOT EXISTS visitors (
+        day TEXT NOT NULL,
+        vhash TEXT NOT NULL,
+        PRIMARY KEY (day, vhash)
+      )`,
+    ),
+    // 페이지뷰: 날짜별로 페이지가 열린 횟수
+    db.prepare(
+      `CREATE TABLE IF NOT EXISTS pageviews (
+        day TEXT PRIMARY KEY,
+        views INTEGER NOT NULL DEFAULT 0
+      )`,
+    ),
   ]);
   schemaReady = true;
 }
@@ -153,6 +170,50 @@ async function adminDelete(id, env) {
   return json({ ok: true });
 }
 
+const BOT_RE = /bot|crawl|spider|slurp|preview|fetch|monitor|headless|lighthouse|curl|wget|python/i;
+const STATS_DAYS = 30;
+
+// 한국 시간(KST) 기준 날짜 'YYYY-MM-DD'
+function kstDay(ms = Date.now()) {
+  return new Date(ms + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
+async function recordVisit(request, env) {
+  const ua = request.headers.get('user-agent') || '';
+  if (!ua || BOT_RE.test(ua)) return new Response(null, { status: 204 });
+  const ip = request.headers.get('cf-connecting-ip') || '';
+  const day = kstDay();
+  const vhash = await sha256(`vibelabnotes:visit:${day}:${ip}:${ua}`);
+  await env.DB.batch([
+    env.DB.prepare('INSERT OR IGNORE INTO visitors (day, vhash) VALUES (?, ?)').bind(day, vhash),
+    env.DB.prepare(
+      'INSERT INTO pageviews (day, views) VALUES (?, 1) ON CONFLICT (day) DO UPDATE SET views = views + 1',
+    ).bind(day),
+  ]);
+  return new Response(null, { status: 204 });
+}
+
+async function adminStats(env) {
+  const today = kstDay();
+  const from = kstDay(Date.now() - (STATS_DAYS - 1) * 24 * 60 * 60 * 1000);
+  const [totals, daily] = await env.DB.batch([
+    env.DB.prepare(
+      `SELECT
+        (SELECT COUNT(*) FROM visitors) AS total_visitors,
+        (SELECT COUNT(*) FROM visitors WHERE day = ?1) AS today_visitors,
+        (SELECT COALESCE(SUM(views), 0) FROM pageviews) AS total_views,
+        (SELECT COALESCE(SUM(views), 0) FROM pageviews WHERE day = ?1) AS today_views`,
+    ).bind(today),
+    env.DB.prepare(
+      `SELECT v.day, v.visitors, COALESCE(p.views, 0) AS views
+       FROM (SELECT day, COUNT(*) AS visitors FROM visitors WHERE day >= ? GROUP BY day) v
+       LEFT JOIN pageviews p ON p.day = v.day
+       ORDER BY v.day DESC`,
+    ).bind(from),
+  ]);
+  return json({ today, ...totals.results[0], daily: daily.results });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -166,6 +227,18 @@ export default {
       if (path === '/api/comments') {
         if (request.method === 'GET') return await listComments(url, env);
         if (request.method === 'POST') return await createComment(request, env);
+        return err('method_not_allowed', 405);
+      }
+
+      if (path === '/api/visit') {
+        if (request.method === 'POST') return await recordVisit(request, env);
+        return err('method_not_allowed', 405);
+      }
+
+      if (path === '/api/admin/stats') {
+        if (!env.ADMIN_PASSWORD) return err('admin_disabled', 503);
+        if (!isAdmin(request, env)) return err('unauthorized', 401);
+        if (request.method === 'GET') return await adminStats(env);
         return err('method_not_allowed', 405);
       }
 
