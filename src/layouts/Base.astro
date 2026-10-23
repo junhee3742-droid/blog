@@ -36,9 +36,12 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:type" content={title ? 'article' : 'website'} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, SITE_URL).href} />
+    <meta property="og:locale" content={lang === 'ko' ? 'ko_KR' : 'en_US'} />
     {ogImage && <meta property="og:image" content={ogImage} />}
     {ogImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
-    {ogImage && <meta name="twitter:card" content="summary_large_image" />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <meta name="theme-color" content="#f6f7f4" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#121a24" media="(prefers-color-scheme: dark)" />
     {SITE_VERIFICATION.google && <meta name="google-site-verification" content={SITE_VERIFICATION.google} />}
@@ -59,6 +62,7 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
     />
   </head>
   <body>
+    <a class="skip-link" href="#main">{lang === 'ko' ? '본문 바로가기' : 'Skip to content'}</a>
     <header class="site-header">
       <div class="container">
         <a class="brand" href={`/${lang}/`}>
@@ -83,7 +87,7 @@ const ogImage = image ? new URL(image, Astro.site ?? SITE_URL).href : undefined;
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main">
       <div class="container">
         <slot />
       </div>

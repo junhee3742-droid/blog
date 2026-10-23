@@ -65,6 +65,14 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
+/* 본문 바로가기: 키보드로 Tab을 누르면 맨 위에 나타나요 */
+.skip-link {
+  position: absolute; left: 12px; top: -48px; z-index: 10;
+  padding: 8px 14px; border-radius: 4px;
+  background: var(--accent); color: var(--paper); font-weight: 600; font-size: 0.9rem;
+}
+.skip-link:focus { top: 12px; text-decoration: none; }
+
 h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.01em; }
 
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
@@ -263,6 +271,8 @@ main { padding: 40px 0 72px; }
 .prose h2 { font-size: 1.45rem; margin: 2.2em 0 0.6em; line-height: 1.4; }
 .prose h3 { font-size: 1.2rem; margin: 1.8em 0 0.5em; line-height: 1.45; }
 .prose strong { font-weight: 700; }
+.prose a { text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: var(--accent); }
 .prose img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--rule); }
 /* 스티커: ![고민](/stickers/thinking.svg) 처럼 넣으면 글 사이에 작게 붙어요 */
 .prose img[src^="/stickers/"] {
@@ -312,6 +322,7 @@ main { padding: 40px 0 72px; }
   .plate h1 { font-size: 1.85rem; align-self: center; margin: 0 0 12px; }
   .plate-mascot { width: 76px; align-self: start; margin-bottom: 8px; }
   .plate-meta { gap: 20px; flex-wrap: wrap; }
+  .site-nav a { display: inline-flex; align-items: center; min-height: 44px; }
   .intro h1 { font-size: 1.6rem; }
   .post-header h1 { font-size: 1.65rem; }
   .entry,
