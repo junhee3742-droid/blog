@@ -24,6 +24,8 @@ coverAlt: mRNA 백신 주사기를 든 뉴로니와 방패를 든 면역세포�
 
 환자 한 사람 한 사람을 위해 따로 만드는 신생항원 암백신이 3상에서 성공한 건 이번이 처음이에요. 다만 아직 **구체적인 숫자는 공개되지 않았고, 승인된 약도 아니에요.** 그래서 이번 글에서는 "확인된 것"과 "아직 모르는 것"을 나눠서 정리해 볼게요.
 
+> **📌 2026년 10월 26일 업데이트:** 10월 24일 유럽종양학회(ESMO 2026)에서 상세 결과가 공개됐어요. 재발 위험이 42% 줄었고, 생존 연장 효과는 아직 확인되지 않았어요. 아래 [업데이트: 드디어 나온 숫자](#업데이트-드디어-나온-숫자-esmo-2026)에 정리했어요.
+
 ## 먼저, 암백신이 뭐예요?
 
 보통 백신이라고 하면 병에 걸리기 전에 맞는 **예방 백신**을 떠올려요. 자궁경부암을 막는 HPV 백신이 대표적이죠.
@@ -70,10 +72,51 @@ coverAlt: mRNA 백신 주사기를 든 뉴로니와 방패를 든 면역세포�
 
 기쁜 소식이지만, 꼭 함께 알아 둬야 할 부분이 있어요.
 
-- **숫자가 아직 없어요.** 위험비(HR), 재발률 같은 구체적 수치는 발표되지 않았어요. 지금은 "통계적으로 유의하고 임상적으로 의미 있다"는 회사 표현뿐이에요. 회사는 곧 열릴 국제 학회에서 발표하겠다고 했어요.
-- **생명을 늘리는지는 몰라요.** 전체 생존(OS)은 아직 추적 관찰 중이에요.
+- ~~**숫자가 아직 없어요.**~~ → 10월 24일 ESMO 2026에서 공개됐어요. 바로 아래 업데이트를 보세요.
+- **생명을 늘리는지는 아직 몰라요.** 전체 생존(OS)은 10월 발표에서도 통계적으로 확인되지 않았고, 추적 관찰 중이에요.
 - **아직 승인 전이에요.** 2026년 10월 현재 어느 나라에서도 승인되지 않았어요. 두 회사는 규제기관과 허가 신청을 논의하겠다고만 밝혔어요.
-- 부작용 비율, 제조에 걸리는 시간, 가격도 아직 공개된 자료가 없어요.
+- 가격은 아직 공개된 자료가 없어요.
+
+## 업데이트: 드디어 나온 숫자 (ESMO 2026)
+
+2026년 10월 24일, 스페인 마드리드에서 열린 유럽종양학회(ESMO 2026)의 가장 큰 무대인 대통령 심포지엄에서 첫 번째 발표(LBA1)로 상세 결과가 공개됐어요. 결과는 의학 학술지 **NEJM**(뉴잉글랜드 저널 오브 메디슨) 게재도 확정됐어요.
+
+| 지표 | 인티스메란 + 키트루다 | 키트루다 단독 | 위험비 (95% 신뢰구간) |
+| --- | --- | --- | --- |
+| 2년 무재발 생존율 | **82.2%** | 70.0% | 0.58 (0.45–0.75), p<0.001 |
+| 2년 원격전이 없는 생존율 | **88.5%** | 80.2% | 0.62 (0.45–0.85), p=0.002 |
+| 전체 생존 | 아직 미성숙 | | 0.77 (0.45–1.31), p=0.33 |
+
+중앙 추적 기간은 24.6개월이에요.
+
+![아이디어](/stickers/idea.svg)
+
+쉽게 풀면 이래요.
+
+- **재발 위험 42% 감소:** 2년 뒤 재발 없이 지내는 사람이 100명 중 70명에서 82명으로 늘어난 셈이에요.
+- **효과는 6개월 뒤부터:** 처음 6개월은 두 그룹 차이가 거의 없었고(위험비 0.99), 6개월 이후부터 차이가 벌어졌어요(위험비 0.42). 맞춤형 백신을 만들어 첫 주사를 맞기까지 중앙값 **64일**이 걸리고, 면역이 길러지는 데도 시간이 필요하다는 점과 맞아떨어져요. 다만 이건 사전에 정한 주 분석이 아니라 추가(민감도) 분석이에요.
+- **생존은 아직:** 전체 생존 위험비 0.77은 좋은 방향이지만, 신뢰구간이 1을 넘고 p=0.33이라 **통계적으로 증명된 건 아니에요.** 사망 사례가 아직 적어서 더 지켜봐야 해요.
+
+### 부작용은?
+
+| 항목 | 인티스메란 + 키트루다 | 키트루다 단독 |
+| --- | --- | --- |
+| 3~5등급(심한) 치료 관련 부작용 | 14.2% | 13.4% |
+| 발열 | 52.2% | 8.2% |
+| 주사 부위 통증 | 51.0% | 9.5% |
+| 독감 같은 증상 | 25.4% | 9.2% |
+| 부작용으로 약 중단 | 14.0% | 8.7% |
+
+심한 부작용 비율은 거의 같았어요. 대신 열, 주사 부위 통증, 몸살 같은 증상은 백신 그룹에서 훨씬 흔했어요. 부작용 때문에 치료를 그만둔 비율은 백신 그룹이 조금 더 높았어요.
+
+### 만들기는 잘 됐을까?
+
+- 백신 그룹 757명 중 **99% 넘게** 맞춤형 백신 제조에 성공했어요.
+- 다만 처음 검사받은 1,749명 중 **17.3%(302명)**는 종양 샘플이 부족해서 참여하지 못했어요. 실제 치료에서도 "모든 환자가 맞을 수 있는가"는 과제로 남아요.
+
+### 그래서 승인은?
+
+아직이에요. 두 회사는 규제기관과 협의 중이라고만 밝혔어요. 승인 소식이 나오면 다시 정리할게요.
 
 ## 3상 전에는? 2b상 KEYNOTE-942
 
@@ -123,11 +166,11 @@ FDA가 승인한 치료용 암백신이 이번이 처음은 아니에요. 2010�
 ## 정리하면
 
 1. 개인 맞춤형 mRNA 암백신이 처음으로 3상에서 성공했어요 (흑색종, 2026년 8월).
-2. 하지만 지금은 "목표를 달성했다"는 발표뿐이고, 숫자와 생존 연장 효과는 학회 발표를 기다려야 해요.
+2. 10월 ESMO 발표에서 재발 위험 42% 감소(2년 무재발 생존율 82.2% 대 70.0%)가 확인됐어요. 다만 생존 연장 효과는 아직 증명되지 않았어요.
 3. 같은 흑색종에서도 기성품형 백신(실렘비오)은 아슬아슬하게 실패했어요.
-4. 다음 관전 포인트는 INTerpath-001 상세 데이터 발표, 그리고 폐암 3상 결과예요.
+4. 다음 관전 포인트는 전체 생존 결과, 허가 여부, 그리고 폐암 3상 결과예요.
 
-상세 데이터가 나오면 이 글도 업데이트할게요!
+새 소식이 나오면 이 글도 계속 업데이트할게요!
 
 ![좋아요](/stickers/thumbs-up.svg)
 
@@ -140,6 +183,9 @@ FDA가 승인한 치료용 암백신이 이번이 처음은 아니에요. 2010�
 - [Merck and Moderna Announce Phase 3 INTerpath-001 Trial Met Endpoints of RFS and DMFS – Merck (2026-08-19)](https://www.merck.com/news/merck-and-moderna-announce-phase-3-interpath-001-trial-of-intismeran-autogene-plus-keytruda-met-endpoints-of-recurrence-free-survival-rfs-and-distant-metastasis-free-survival-dmfs-in-patient/)
 - [Recapping Positive Phase 3 Topline Results for Intismeran – Moderna](https://www.modernatx.com/ir-insights-phase-3-intesmeran)
 - [INTerpath-001 Trial Meets Primary and Key Secondary Endpoints – The ASCO Post](https://ascopost.com/news/august-2026/interpath-001-trial-of-mrna-based-individualized-neoantigen-therapy-meets-primary-and-key-secondary-endpoints-in-patients-with-high-risk-resected-melanoma/)
+- [Merck and Moderna Will Present Results From Landmark Phase 3 INTerpath-001 Trial at ESMO 2026 Presidential Symposium – Merck (2026-10-24)](https://www.merck.com/news/merck-and-moderna-will-present-results-from-landmark-phase-3-interpath-001-trial-for-intismeran-autogene-plus-keytruda-pembrolizumab-at-esmo-2026-presidential-symposium/)
+- [IR Insights: Recapping the Phase 3 INTerpath-001 Results – Moderna](https://www.modernatx.com/recapping-the-phase-three-interpath-results)
+- [INTerpath-001 Data Detail Survival, Subgroup, and Safety Findings in Melanoma – CancerNetwork](https://www.cancernetwork.com/view/interpath-001-data-detail-survival-subgroup-and-safety-findings-in-melanoma)
 - [Weber JS et al. KEYNOTE-942, The Lancet 2024;403:632–44](https://doi.org/10.1016/S0140-6736\(23\)02268-7)
 - [IO Biotech Provides Update Following Pre-BLA Meeting with FDA – IO Biotech (2025-09-29)](https://www.biospace.com/press-releases/io-biotech-provides-update-following-pre-bla-meeting-with-fda)
 - [After Narrow Miss in Phase 3 Study, IO Biotech Ponders Next Steps – AJMC (2025-10-22)](https://www.ajmc.com/view/after-narrow-miss-in-phase-3-study-io-biotech-ponders-next-steps-for-immune-modulatory-off-the-shelf-cancer-vaccine)
