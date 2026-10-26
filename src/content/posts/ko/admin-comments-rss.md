@@ -13,6 +13,8 @@ tags:
   - RSS
   - CMS
 draft: true
+cover: /images/posts/admin-comments-rss-cover.jpg
+coverAlt: 뉴로니가 책상에서 노트를 쓰고, 주위에 말풍선(댓글)과 RSS 아이콘이 떠 있는 그림
 ---
 
 1편에서 직접 만든 블로그의 단점으로 "기본 기능도 직접 만들어야 한다"고 했어요. 티스토리에는 처음부터 있는 글쓰기 화면, 댓글, 구독이 저희 블로그에는 하나도 없었어요.
