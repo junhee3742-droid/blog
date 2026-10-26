@@ -13,6 +13,8 @@ tags:
   - 배포
   - 애드센스
 draft: true
+cover: /images/posts/publish-blog-cloudflare-cover.jpg
+coverAlt: 뉴로니가 언덕 위 집 문을 열고, 설계도 상자에서 집까지 점선이 이어진 그림
 ---
 
 지난 편에서 Claude가 블로그 설계도(코드)를 다 그려서 GitHub 창고에 넣어 줬어요. 그런데 이 블로그를 볼 수 있는 사람은 아직 아무도 없었어요.
