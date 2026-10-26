@@ -14,6 +14,8 @@ tags:
   - Astro
   - GitHub
 draft: false
+cover: /images/posts/ask-ai-to-build-blog-cover.jpg
+coverAlt: 뉴로니가 말을 걸자 건축가 AI가 웹사이트 설계도를 그리고, 페이지들이 상자로 날아가는 그림
 cover: ''
 coverAlt: ''
 ---
