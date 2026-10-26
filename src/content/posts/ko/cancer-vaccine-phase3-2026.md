@@ -89,7 +89,7 @@ coverAlt: mRNA 백신 주사기를 든 뉴로니와 방패를 든 면역세포�
 
 중앙 추적 기간은 24.6개월이에요.
 
-![아이디어](/stickers/idea.svg)
+![결승선에서 초시계를 든 뉴로니 앞으로, mRNA 리본과 방패를 든 면역세포들이 달려오고 뒤쪽에는 회색 암세포 몇 개가 따라오는 그림](/images/posts/cancer-vaccine-esmo-results.jpg)
 
 쉽게 풀면 이래요.
 
