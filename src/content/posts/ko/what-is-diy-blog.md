@@ -11,6 +11,8 @@ tags:
   - 블로그직접만들기
   - 입문
 draft: false
+cover: /images/posts/what-is-diy-blog-cover.jpg
+coverAlt: 왼쪽엔 아파트, 오른쪽엔 짓고 있는 집, 가운데서 뉴로니가 설계도를 들고 있는 그림
 ---
 
 "블로그를 직접 만들었어요"라고 하면 보통 이런 반응이 와요.
