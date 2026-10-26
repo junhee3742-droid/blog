@@ -16,8 +16,6 @@ tags:
 draft: false
 cover: /images/posts/ask-ai-to-build-blog-cover.jpg
 coverAlt: 뉴로니가 말을 걸자 건축가 AI가 웹사이트 설계도를 그리고, 페이지들이 상자로 날아가는 그림
-cover: ''
-coverAlt: ''
 ---
 
 지난 편에서 블로그를 "직접 만든다"는 게 내 땅에 내 집을 짓는 일이라고 했어요. 그런데 저는 설계도(코드)를 그릴 줄 몰라요.
