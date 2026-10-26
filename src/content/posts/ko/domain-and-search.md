@@ -13,6 +13,8 @@ tags:
   - 서치콘솔
   - 애드센스
 draft: true
+cover: /images/posts/domain-and-search-cover.jpg
+coverAlt: 뉴로니가 사다리에 올라 집 문에 주소 명패를 달고, 하늘에서 돋보기와 위치 핀이 집을 가리키는 그림
 ---
 
 블로그는 다 만들었는데, 주소가 `vibelabnotes.junhee3742.workers.dev`였어요. 길고, 외우기 어렵고, 무엇보다 **애드센스를 신청할 수 없는 주소**였어요.
