@@ -12,6 +12,8 @@ tags:
   - 블로그디자인
   - 마스코트
 draft: true
+cover: /images/posts/design-and-mascot-cover.jpg
+coverAlt: 로봇 둘이 연구실 노트 디자인과 뉴로니 스케치를 그리고, 가운데서 뉴로니가 손을 흔드는 그림
 ---
 
 지난 편에서 블로그를 인터넷에 올렸어요. 그런데 처음 모습은 하얀 바탕에 글자만 있는, 아주 수수한 집이었어요.
