@@ -1,8 +1,9 @@
 ---
+translationKey: ''
 title: '[블로그 직접 만들기 ④] 이름 짓고 옷 입히기'
 subtitle: 블로그 디자인과 마스코트 뉴로니, AI 에이전트 둘이 동시에 만든 이야기
 description: 블로그에 연구실 노트 디자인을 입히고, 뉴런을 닮은 마스코트 뉴로니와 스티커 8종을 만든 과정이에요. AI 에이전트 두 개에게 일을 나눠 맡긴 경험도 정리했어요.
-date: 2026-10-26
+date: 2026-10-30
 lang: ko
 category: projects
 tags:
@@ -11,7 +12,7 @@ tags:
   - 블로그직접만들기
   - 블로그디자인
   - 마스코트
-draft: true
+draft: false
 cover: /images/posts/design-and-mascot-cover.jpg
 coverAlt: 로봇 둘이 연구실 노트 디자인과 뉴로니 스케치를 그리고, 가운데서 뉴로니가 손을 흔드는 그림
 ---
