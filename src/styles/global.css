@@ -176,9 +176,13 @@ main { padding: 40px 0 72px; }
   border: 1px solid var(--rule);
   border-top: 3px solid var(--cat);
   border-radius: 0 6px 6px 6px;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
-.tab-card:hover .tab-body { border-color: var(--cat); }
+.tab-card:hover .tab-body {
+  border-color: var(--cat);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 .tab-desc { color: var(--muted); font-size: 0.93rem; line-height: 1.6; }
 .tab-count { font-family: var(--font-mono); font-size: 0.8rem; color: var(--cat); }
 
@@ -274,6 +278,7 @@ main { padding: 40px 0 72px; }
 .prose a { text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
 .prose a:hover { text-decoration-color: var(--accent); }
 .prose img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--rule); }
+.prose p > img:not([src^="/stickers/"]) { display: block; margin: 1.6em auto; }
 /* 스티커: ![고민](/stickers/thinking.svg) 처럼 넣으면 글 사이에 작게 붙어요 */
 .prose img[src^="/stickers/"] {
   display: inline-block; vertical-align: middle;
@@ -282,8 +287,10 @@ main { padding: 40px 0 72px; }
   margin: 4px 10px 4px 0;
 }
 .prose blockquote {
-  margin: 1.5em 0; padding: 4px 18px; border-left: 3px solid var(--accent); color: var(--muted);
+  margin: 1.5em 0; padding: 10px 18px; border-left: 3px solid var(--accent);
+  background: var(--surface); border-radius: 0 6px 6px 0; color: var(--muted);
 }
+.prose blockquote p { margin: 0.4em 0; }
 .prose code {
   font-family: var(--font-mono); background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 0.86em;
 }
@@ -292,9 +299,12 @@ main { padding: 40px 0 72px; }
   font-size: 0.86rem; line-height: 1.6; border: 1px solid var(--rule);
 }
 .prose pre code { background: none; padding: 0; }
-.prose table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; font-size: 0.95rem; }
-.prose th, .prose td { border: 1px solid var(--rule); padding: 6px 10px; text-align: left; }
-.prose th { background: var(--surface); }
+.prose table {
+  border-collapse: collapse; width: 100%; margin: 1.6em 0;
+  font-size: 0.95rem; background: var(--surface);
+}
+.prose th, .prose td { border: 1px solid var(--rule); padding: 9px 12px; text-align: left; vertical-align: top; }
+.prose th { background: var(--accent-soft); font-weight: 600; }
 .prose hr { border: none; border-top: 1px dashed var(--rule-strong); margin: 2.4em 0; }
 .prose ul, .prose ol { padding-left: 1.4em; }
 .prose li::marker { color: var(--muted); }
@@ -302,6 +312,23 @@ main { padding: 40px 0 72px; }
 .tags { margin-top: 44px; display: flex; gap: 8px 14px; flex-wrap: wrap; }
 .tag { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); }
 .back { display: inline-block; margin-top: 28px; font-size: 0.95rem; }
+
+/* 이전 노트 / 다음 노트 네비게이션 */
+.post-nav {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+  margin-top: 32px;
+}
+.post-nav-item {
+  display: flex; flex-direction: column; gap: 4px; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+  color: var(--ink); transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.post-nav-item:hover {
+  border-color: var(--accent); text-decoration: none; transform: translateY(-1px);
+}
+.post-nav-item.next { text-align: right; }
+.post-nav-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+.post-nav-title { font-family: var(--font-serif); font-weight: 700; font-size: 0.98rem; line-height: 1.4; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--rule); padding: 24px 0 40px; color: var(--muted); font-size: 0.85rem; }
@@ -323,8 +350,13 @@ main { padding: 40px 0 72px; }
   .plate-mascot { width: 76px; align-self: start; margin-bottom: 8px; }
   .plate-meta { gap: 20px; flex-wrap: wrap; }
   .site-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .site-nav .lang-switch { min-height: 32px; padding: 3px 10px; }
   .intro h1 { font-size: 1.6rem; }
   .post-header h1 { font-size: 1.65rem; }
+  .prose img[src^="/stickers/"] { width: 72px; height: 72px; margin: 4px 6px 4px 0; }
+  .prose table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .post-nav { grid-template-columns: minmax(0, 1fr); }
+  .post-nav-item.next { text-align: left; }
   .entry,
   .entry.has-thumb {
     grid-template-columns: minmax(0, 1fr);

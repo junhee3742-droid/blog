@@ -12,23 +12,30 @@ export async function getStaticPaths() {
   const byDate = [...posts].sort(
     (a, b) => a.data.date.valueOf() - b.data.date.valueOf() || a.id.localeCompare(b.id),
   );
-  return posts.map((post) => ({
-    params: { lang: post.data.lang, slug: postSlug(post) },
-    props: {
-      post,
-      noteNo: byDate
-        .filter((p) => p.data.lang === post.data.lang && p.data.category === post.data.category)
-        .findIndex((p) => p.id === post.id) + 1,
-    },
-  }));
+  return posts.map((post) => {
+    const sameLang = byDate.filter((p) => p.data.lang === post.data.lang);
+    const langIdx = sameLang.findIndex((p) => p.id === post.id);
+    const sameCat = sameLang.filter((p) => p.data.category === post.data.category);
+    return {
+      params: { lang: post.data.lang, slug: postSlug(post) },
+      props: {
+        post,
+        noteNo: sameCat.findIndex((p) => p.id === post.id) + 1,
+        prevPost: langIdx > 0 ? sameLang[langIdx - 1] : undefined,
+        nextPost: langIdx < sameLang.length - 1 ? sameLang[langIdx + 1] : undefined,
+      },
+    };
+  });
 }
 
 interface Props {
   post: Post;
   noteNo: number;
+  prevPost?: Post;
+  nextPost?: Post;
 }
 
-const { post, noteNo } = Astro.props;
+const { post, noteNo, prevPost, nextPost } = Astro.props;
 const lang = post.data.lang as Lang;
 const { Content } = await render(post);
 const translation = await findTranslation(post);
@@ -39,9 +46,13 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
   lang={lang}
   title={fullTitle}
   description={post.data.description}
+  type="article"
   alternateUrl={translation ? postUrl(translation) : undefined}
   image={post.data.cover}
   imageAlt={post.data.coverAlt}
+  publishedTime={post.data.date}
+  categoryLabel={CATEGORY_LABEL[lang][post.data.category]}
+  tags={post.data.tags}
 >
   <article class={`post cat-${post.data.category}`}>
     {
@@ -91,6 +102,29 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
             <span class="tag">#{tag}</span>
           ))}
         </div>
+      )
+    }
+
+    {
+      (prevPost || nextPost) && (
+        <nav class="post-nav" aria-label={lang === 'ko' ? '이전·다음 글' : 'Post navigation'}>
+          {prevPost ? (
+            <a class="post-nav-item prev" href={postUrl(prevPost)}>
+              <span class="post-nav-label">{UI[lang].prevNote}</span>
+              <span class="post-nav-title">{prevPost.data.title}</span>
+            </a>
+          ) : (
+            <div />
+          )}
+          {nextPost ? (
+            <a class="post-nav-item next" href={postUrl(nextPost)}>
+              <span class="post-nav-label">{UI[lang].nextNote}</span>
+              <span class="post-nav-title">{nextPost.data.title}</span>
+            </a>
+          ) : (
+            <div />
+          )}
+        </nav>
       )
     }
 

@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import CategoryIcon from '../../components/CategoryIcon.astro';
 import PostList from '../../components/PostList.astro';
 import { CATEGORIES, LANGS, SITE, type Lang } from '../../config';
-import { CATEGORY_DESC, CATEGORY_LABEL, UI, countLabel, stampDate } from '../../i18n';
+import { CATEGORY_DESC, CATEGORY_LABEL, UI, countLabel, otherLang, stampDate } from '../../i18n';
 import { getPosts } from '../../lib/posts';
 
 export function getStaticPaths() {
@@ -17,7 +17,7 @@ const t = UI[lang];
 const firstPost = posts.length > 0 ? posts[posts.length - 1] : undefined;
 ---
 
-<Base lang={lang}>
+<Base lang={lang} alternateUrl={`/${otherLang(lang)}/`}>
   <section class="hero">
     <div class="plate">
       <h1>{SITE.title[lang]}</h1>

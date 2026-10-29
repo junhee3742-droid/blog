@@ -1,19 +1,33 @@
 ---
 // 첫 주소(/)로 들어오면 한국어 홈으로 보내요.
-import { SITE_VERIFICATION } from '../config';
+import { SITE, SITE_URL, SITE_VERIFICATION } from '../config';
+const ogImage = new URL('/images/posts/meet-neuroni-cover.png', SITE_URL).href;
 ---
 
 <!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="refresh" content="0; url=/ko/" />
-    <link rel="canonical" href="/ko/" />
+    <link rel="canonical" href={`${SITE_URL}/ko/`} />
+    <link rel="alternate" hreflang="ko" href={`${SITE_URL}/ko/`} />
+    <link rel="alternate" hreflang="en" href={`${SITE_URL}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/ko/`} />
+    <title>{SITE.title.ko}</title>
+    <meta name="description" content={SITE.description.ko} />
+    <meta property="og:title" content={SITE.title.ko} />
+    <meta property="og:description" content={SITE.description.ko} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.title.ko} />
+    <meta property="og:url" content={`${SITE_URL}/ko/`} />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     {SITE_VERIFICATION.google && <meta name="google-site-verification" content={SITE_VERIFICATION.google} />}
     {SITE_VERIFICATION.naver && <meta name="naver-site-verification" content={SITE_VERIFICATION.naver} />}
-    <title>Redirecting…</title>
   </head>
   <body>
-    <a href="/ko/">/ko/</a>
+    <a href="/ko/">{SITE.title.ko}</a>
   </body>
 </html>
