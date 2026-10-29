@@ -1,8 +1,9 @@
 ---
+translationKey: ''
 title: '[블로그 직접 만들기 ③] 내 블로그, 세상에 공개!'
 subtitle: 배포가 뭘까? Cloudflare 무료 호스팅으로 블로그를 인터넷에 올리는 법
 description: AI와 만든 블로그 코드를 Cloudflare로 인터넷에 올린 과정이에요. 배포가 뭔지, 처음 쓴 Vercel에서 광고 문제로 Cloudflare로 옮긴 이유, 자동 배포까지 정리했어요.
-date: 2026-10-26
+date: 2026-10-29
 lang: ko
 category: projects
 tags:
@@ -12,7 +13,7 @@ tags:
   - Cloudflare
   - 배포
   - 애드센스
-draft: true
+draft: false
 cover: /images/posts/publish-blog-cloudflare-cover.jpg
 coverAlt: 뉴로니가 언덕 위 집 문을 열고, 설계도 상자에서 집까지 점선이 이어진 그림
 ---
