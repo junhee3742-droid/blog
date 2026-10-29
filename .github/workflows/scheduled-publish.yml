@@ -1,0 +1,21 @@
+# 예약 발행: 매시간 Cloudflare 배포 훅을 불러 사이트를 다시 빌드해요.
+# 날짜(date)가 지난 글만 빌드에 들어가서, 예약한 글이 그 시각 이후 자동으로 공개돼요.
+# 필요한 설정: GitHub 저장소 Settings → Secrets and variables → Actions 에
+#   CLOUDFLARE_DEPLOY_HOOK = Cloudflare Workers → vibelabnotes → Settings → Build → Deploy Hooks 에서 만든 주소
+name: Scheduled publish
+
+on:
+  schedule:
+    - cron: '2 * * * *' # 매시간 2분 (UTC)
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare build
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "CLOUDFLARE_DEPLOY_HOOK secret is not set"; exit 1; fi
+          curl -fsS -X POST "$HOOK"
