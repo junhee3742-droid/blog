@@ -4,10 +4,10 @@ import Base from '../../../layouts/Base.astro';
 import Comments from '../../../components/Comments.astro';
 import type { Lang } from '../../../config';
 import { CATEGORY_LABEL, NOTE_KIND, UI, formatDate, noteNumber, noteOpenLabel, stampDate } from '../../../i18n';
-import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/posts';
+import { findTranslation, isPublished, postSlug, postUrl, type Post } from '../../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const posts = await getCollection('posts', ({ data }) => isPublished(data));
   // 노트 번호: 언어·카테고리별로 오래된 글부터 1, 2, 3... (같은 날짜면 제목 ①, ②, ③ 순)
   const byDate = [...posts].sort(
     (a, b) =>
