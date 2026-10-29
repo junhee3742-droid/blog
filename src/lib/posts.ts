@@ -8,7 +8,10 @@ export async function getPosts(lang: Lang, category?: Category): Promise<Post[]>
     'posts',
     ({ data }) => !data.draft && data.lang === lang && (!category || data.category === category),
   );
-  return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  // 최신 날짜순 정렬. 같은 날짜에 여러 편이 올라오면 제목(①, ②, ③...) 역순이 최신 글이 되도록 정렬
+  return posts.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf() || b.data.title.localeCompare(a.data.title, 'ko'),
+  );
 }
 
 // 'ko/hello-world' → 'hello-world'

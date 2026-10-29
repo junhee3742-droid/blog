@@ -8,9 +8,12 @@ import { findTranslation, postSlug, postUrl, type Post } from '../../../lib/post
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  // 노트 번호: 언어·카테고리별로 오래된 글부터 1, 2, 3...
+  // 노트 번호: 언어·카테고리별로 오래된 글부터 1, 2, 3... (같은 날짜면 제목 ①, ②, ③ 순)
   const byDate = [...posts].sort(
-    (a, b) => a.data.date.valueOf() - b.data.date.valueOf() || a.id.localeCompare(b.id),
+    (a, b) =>
+      a.data.date.valueOf() - b.data.date.valueOf() ||
+      a.data.title.localeCompare(b.data.title, 'ko') ||
+      a.id.localeCompare(b.id),
   );
   return posts.map((post) => {
     const sameLang = byDate.filter((p) => p.data.lang === post.data.lang);
