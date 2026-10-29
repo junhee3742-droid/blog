@@ -117,7 +117,7 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
               <span class="post-nav-title">{prevPost.data.title}</span>
             </a>
           ) : (
-            <div />
+            <div></div>
           )}
           {nextPost ? (
             <a class="post-nav-item next" href={postUrl(nextPost)}>
@@ -125,7 +125,7 @@ const fullTitle = post.data.subtitle ? `${post.data.title} – ${post.data.subti
               <span class="post-nav-title">{nextPost.data.title}</span>
             </a>
           ) : (
-            <div />
+            <div></div>
           )}
         </nav>
       )
