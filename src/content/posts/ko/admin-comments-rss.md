@@ -1,8 +1,9 @@
 ---
+translationKey: ''
 title: '[블로그 직접 만들기 ⑤] 이제 진짜 블로그다!'
 subtitle: 글쓰기 관리자 화면, 로그인 없는 댓글, RSS 구독 기능을 무료로 붙이기
 description: 직접 만든 블로그에 티스토리처럼 글을 쓰는 관리자 화면(Sveltia CMS), 로그인 없이 쓰는 댓글, RSS 구독을 붙인 과정이에요. 모두 무료로 만들었어요.
-date: 2026-10-26
+date: 2026-10-31
 lang: ko
 category: projects
 tags:
@@ -12,7 +13,7 @@ tags:
   - 댓글
   - RSS
   - CMS
-draft: true
+draft: false
 cover: /images/posts/admin-comments-rss-cover.jpg
 coverAlt: 뉴로니가 책상에서 노트를 쓰고, 주위에 말풍선(댓글)과 RSS 아이콘이 떠 있는 그림
 ---
