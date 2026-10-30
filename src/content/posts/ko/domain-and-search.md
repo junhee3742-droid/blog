@@ -1,8 +1,9 @@
 ---
+translationKey: ''
 title: '[블로그 직접 만들기 ⑥] 우리 집 주소가 생겼어요!'
 subtitle: 도메인 구매부터 구글 서치 콘솔, 네이버 서치어드바이저 등록까지
 description: 애드센스를 위해 Cloudflare에서 도메인(vibelabnotes.com)을 사고 블로그에 연결한 과정, 구글·네이버 검색에 블로그를 등록한 방법을 정리했어요.
-date: 2026-10-26
+date: 2026-11-01
 lang: ko
 category: projects
 tags:
@@ -12,12 +13,12 @@ tags:
   - 도메인
   - 서치콘솔
   - 애드센스
-draft: true
+draft: false
 cover: /images/posts/domain-and-search-cover.jpg
 coverAlt: 뉴로니가 사다리에 올라 집 문에 주소 명패를 달고, 하늘에서 돋보기와 위치 핀이 집을 가리키는 그림
 ---
 
-블로그는 다 만들었는데, 주소가 `vibelabnotes.junhee3742.workers.dev`였어요. 길고, 외우기 어렵고, 무엇보다 **애드센스를 신청할 수 없는 주소**였어요.
+블로그는 다 만들었는데, 주소가 너무 길고, 외우기 어렵고, 무엇보다 **애드센스를 신청할 수 없는 주소**였어요.
 
 > "주소가 왜 문제야?"
 
