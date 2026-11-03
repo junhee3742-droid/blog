@@ -12,6 +12,8 @@ tags:
   - 예약발행
   - GitHubActions
 draft: true
+cover: /images/posts/scheduled-publishing-cover.jpg
+coverAlt: 뉴로니가 달 아래에서 자는 동안 로봇이 새 글을 집 모양 웹사이트에 넣는 그림
 ---
 
 티스토리에는 "예약 발행" 버튼이 있어요. 글을 미리 써 두고 원하는 시간에 올라가게 하는 기능이죠. 직접 만든 블로그에는 당연히 없었어요.
