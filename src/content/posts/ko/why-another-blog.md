@@ -12,6 +12,8 @@ tags:
   - 티스토리
   - 벨로그
 draft: true
+cover: /images/posts/why-another-blog-cover.jpg
+coverAlt: 갈림길에서 뉴로니가 건강·주식·연구 노트 세 집 중 연구 노트 쪽을 가리키는 그림
 ---
 
 사실 저는 이미 블로그가 하나 있어요. 건강정보를 올리는 티스토리 블로그예요.
