@@ -12,6 +12,8 @@ tags:
   - AI글쓰기
   - 제미나이
 draft: true
+cover: /images/posts/ai-science-writing-images-cover.jpg
+coverAlt: 뉴로니가 돋보기로 논문을 확인하고, AI 도우미들이 초안을 건네고 뉴로니 그림을 그리는 그림
 ---
 
 블로그가 다 만들어졌으니, 이제 진짜 글을 써야 했어요. 첫 과학 글은 마침 발표된 **2026 노벨상**이었어요.
