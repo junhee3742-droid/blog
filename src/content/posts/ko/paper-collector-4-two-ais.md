@@ -1,7 +1,7 @@
 ---
 title: '[논문 수집기 만들기 ④] AI 두 개에게 일 나눠 맡기기'
-subtitle: 논문 검색은 안티그래비티, 검사와 정리는 Claude: 지시서 하나로 AI 분업하기
-description: 논문 검색은 토큰이 많이 들어서 다른 AI(안티그래비티)에게 맡기고, Claude는 검사와 정리, 예약 작업을 맡는 분업 구조를 만든 과정이에요.
+subtitle: '논문 검색은 안티그래비티, 검사와 정리는 Claude: 지시서 하나로 AI 분업하기'
+description: '논문 검색은 토큰이 많이 들어서 다른 AI(안티그래비티)에게 맡기고, Claude는 검사와 정리, 예약 작업을 맡는 분업 구조를 만든 과정이에요.'
 date: 2026-11-06
 lang: ko
 category: projects

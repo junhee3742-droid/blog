@@ -1,7 +1,7 @@
 ---
 title: '[논문 수집기 만들기 ③] AI가 논문을 지어내지 않게'
-subtitle: AI 논문 요약의 환각(hallucination) 막는 규칙: 초록에 있는 사실만, 원문 함께 저장
-description: AI에게 논문 요약을 맡길 때 없는 내용을 지어내는 환각을 막기 위해 정한 규칙들과, 요약을 직접 검증하는 방법을 정리했어요.
+subtitle: 'AI 논문 요약의 환각(hallucination) 막는 규칙: 초록에 있는 사실만, 원문 함께 저장'
+description: 'AI에게 논문 요약을 맡길 때 없는 내용을 지어내는 환각을 막기 위해 정한 규칙들과, 요약을 직접 검증하는 방법을 정리했어요.'
 date: 2026-11-06
 lang: ko
 category: projects
