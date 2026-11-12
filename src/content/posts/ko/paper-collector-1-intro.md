@@ -12,6 +12,8 @@ tags:
   - 대학원생
   - AI활용
 draft: true
+cover: /images/posts/paper-collector-1-intro-cover.jpg
+coverAlt: 논문 더미 앞에서 지친 뉴로니에게 로봇이 논문 10편이 든 폴더를 건네는 그림
 ---
 
 대학원생에게 논문 찾기는 끝이 없는 숙제예요. 제 분야만 해도 매주 새 논문이 쏟아지는데, 그중 정말 읽어야 할 걸 고르는 데만 한참이 걸려요.
