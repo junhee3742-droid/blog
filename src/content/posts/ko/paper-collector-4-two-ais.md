@@ -12,6 +12,8 @@ tags:
   - 대학원생
   - AI활용
 draft: true
+cover: /images/posts/paper-collector-4-two-ais-cover.jpg
+coverAlt: 로봇 하나는 도서관에서 논문을 날라 상자에 넣고, 다른 로봇은 검사해 서랍에 정리하며 뉴로니가 커피를 들고 지켜보는 그림
 ---
 
 처음엔 Claude 혼자 다 하려고 했어요. 그런데 금방 문제가 생겼어요.
