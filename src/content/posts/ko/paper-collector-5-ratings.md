@@ -12,6 +12,8 @@ tags:
   - 대학원생
   - AI활용
 draft: true
+cover: /images/posts/paper-collector-5-ratings-cover.jpg
+coverAlt: 뉴로니가 노트북에서 별점을 매기면 별들이 날아가 로봇이 더 좋은 논문을 고르는 그림
 ---
 
 논문 수집기의 마지막 조각은 **저**예요. 제가 매기는 별점이 수집기를 점점 제 취향에 맞게 바꿔요.
