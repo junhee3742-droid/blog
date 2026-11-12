@@ -12,6 +12,8 @@ tags:
   - 대학원생
   - AI활용
 draft: true
+cover: /images/posts/paper-collector-3-hallucination-cover.jpg
+coverAlt: 뉴로니가 돋보기로 요약과 논문 원문을 비교하고, 로봇이 요약의 잘못된 줄을 지우는 그림
 ---
 
 AI에게 논문 요약을 맡기면 무서운 점이 하나 있어요. **그럴듯하게 틀린다**는 거예요.
