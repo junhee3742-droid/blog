@@ -1,8 +1,9 @@
 ---
+translationKey: ''
 title: '[논문 수집기 만들기 ②] 내 관심사를 AI에게 가르치기'
-subtitle: '논문 수집기의 연구 키워드와 선정 기준(최근 5년, IF 10 이상) 정하는 법'
-description: '자동 논문 수집기가 내 분야 논문만 고르도록, 연구 관심사와 키워드, 저널 영향력, 기간 같은 선정 기준을 정한 과정이에요.'
-date: 2026-11-06
+subtitle: 논문 수집기의 연구 키워드와 선정 기준(최근 5년, IF 10 이상) 정하는 법
+description: 자동 논문 수집기가 내 분야 논문만 고르도록, 연구 관심사와 키워드, 저널 영향력, 기간 같은 선정 기준을 정한 과정이에요.
+date: 2026-11-07
 lang: ko
 category: projects
 tags:
@@ -11,7 +12,7 @@ tags:
   - 저널클럽
   - 대학원생
   - AI활용
-draft: true
+draft: false
 cover: /images/posts/paper-collector-2-criteria-cover.jpg
 coverAlt: 뉴로니가 화이트보드의 키워드 카드 네 장을 가리키며 받아 적는 로봇에게 설명하는 그림
 ---
