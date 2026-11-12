@@ -1,7 +1,8 @@
 ---
+translationKey: ''
 title: '[논문 수집기 만들기 ①] 논문 찾다 지친 대학원생, AI 저널클럽을 만들다'
-subtitle: '매주 월요일 내 분야 최신 논문 10편을 한국어 요약으로 받아 보는 자동 논문 수집기'
-description: '신경과학 대학원생이 Claude와 함께 매주 관심 분야 논문 10편을 골라 한국어로 요약해 주는 자동 논문 수집기를 만든 이야기예요.'
+subtitle: 매주 월요일 내 분야 최신 논문 10편을 한국어 요약으로 받아 보는 자동 논문 수집기
+description: 신경과학 대학원생이 Claude와 함께 매주 관심 분야 논문 10편을 골라 한국어로 요약해 주는 자동 논문 수집기를 만든 이야기예요.
 date: 2026-11-06
 lang: ko
 category: projects
@@ -11,7 +12,7 @@ tags:
   - 저널클럽
   - 대학원생
   - AI활용
-draft: true
+draft: false
 cover: /images/posts/paper-collector-1-intro-cover.jpg
 coverAlt: 논문 더미 앞에서 지친 뉴로니에게 로봇이 논문 10편이 든 폴더를 건네는 그림
 ---
