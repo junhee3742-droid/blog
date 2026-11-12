@@ -12,6 +12,8 @@ tags:
   - 대학원생
   - AI활용
 draft: true
+cover: /images/posts/paper-collector-2-criteria-cover.jpg
+coverAlt: 뉴로니가 화이트보드의 키워드 카드 네 장을 가리키며 받아 적는 로봇에게 설명하는 그림
 ---
 
 논문 수집기를 만들 때 가장 먼저 한 일은 코드가 아니었어요. **"나는 무엇에 관심이 있지?"**를 글로 적는 거였어요.
